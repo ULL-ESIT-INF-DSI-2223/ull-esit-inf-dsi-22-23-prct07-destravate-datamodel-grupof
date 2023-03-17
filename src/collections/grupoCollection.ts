@@ -1,5 +1,4 @@
 import { grupo } from '../types/grupos'
-import { rutas } from '../types/rutas'
 import { grupoSchema } from '../schemas/grupoSchema'
 import lowdb from "lowdb";
 import FileSync from "lowdb/adapters/FileSync";

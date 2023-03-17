@@ -1,53 +1,52 @@
 {
-    "rutas":[
-           
-        {
-            "id": "R1",
-            "nombre": "Ruta en bicicleta por la ciudad",
-            "coordenadasInicio": "40.4567,-3.5678",
-            "coordenadasFinal": "40.5678,-3.6789",
-            "longitudRuta": 20,
-            "desnivelMedio": 50,
-            "usuariosFinalizados": [],
-            "tipoActividad": "Bicicleta",
-            "calificacionMedia": 3.8
-        },
-
-        {
-            "id": "R2",
-            "nombre": "Ruta de senderismo en la montaña",
-            "coordenadasInicio": "39.9876,-2.3456",
-            "coordenadasFinal": "39.8765,-2.4567",
-            "longitudRuta": 15,
-            "desnivelMedio": 200,
-            "usuariosFinalizados": [],
-            "tipoActividad": "Corriendo",
-            "calificacionMedia": 4.5
-        },
-
-        {
-            "id": "R3",
-            "nombre": "Ruta de senderismo en la playa",
-            "coordenadasInicio": "28.6483,-38.6987",
-            "coordenadasFinal": "29.684,-29.984",
-            "longitudRuta": 10,
-            "desnivelMedio": 25,
-            "usuariosFinalizados": [],
-            "tipoActividad": "Corriendo",
-            "calificacionMedia": 4.2
-        },
-
-        {
-            "id": "R4",
-            "nombre": "Ruta de senderismo por el parque nacional",
-            "coordenadasInicio": "41.2013,-1.7342",
-            "coordenadasFinal": "41.1679,-1.7948",
-            "longitudRuta": 15,
-            "desnivelMedio": 300,
-            "usuariosFinalizados": [],
-            "tipoActividad": "Corriendo",
-            "calificacionMedia": 4.5
-        }
-        
-        ]
+  "ruta": [
+    {
+      "id": "R1",
+      "nombre": "Ruta en bicicleta por la ciudad",
+      "coordenadasInicio": "40.4567,-3.5678",
+      "coordenadasFinal": "40.5678,-3.6789",
+      "longitudRuta": 20,
+      "desnivelMedio": 50,
+      "usuariosFinalizados": [
+        "USU5",
+        "USU7",
+        "USU2"
+      ],
+      "tipoActividad": "Bicicleta",
+      "calificacionMedia": 3.8
+    },
+    {
+      "id": "R2",
+      "nombre": "Ruta de senderismo en la montaña",
+      "coordenadasInicio": "39.9876,-2.3456",
+      "coordenadasFinal": "39.8765,-2.4567",
+      "longitudRuta": 15,
+      "desnivelMedio": 200,
+      "usuariosFinalizados": [],
+      "tipoActividad": "Corriendo",
+      "calificacionMedia": 4.5
+    },
+    {
+      "id": "R3",
+      "nombre": "Ruta de senderismo en la playa",
+      "coordenadasInicio": "28.6483,-38.6987",
+      "coordenadasFinal": "29.684,-29.984",
+      "longitudRuta": 10,
+      "desnivelMedio": 25,
+      "usuariosFinalizados": [],
+      "tipoActividad": "Corriendo",
+      "calificacionMedia": 4.2
+    },
+    {
+      "id": "R4",
+      "nombre": "Ruta de senderismo por el parque nacional",
+      "coordenadasInicio": "41.2013,-1.7342",
+      "coordenadasFinal": "41.1679,-1.7948",
+      "longitudRuta": 15,
+      "desnivelMedio": 300,
+      "usuariosFinalizados": [],
+      "tipoActividad": "Corriendo",
+      "calificacionMedia": 4.5
     }
+  ]
+}

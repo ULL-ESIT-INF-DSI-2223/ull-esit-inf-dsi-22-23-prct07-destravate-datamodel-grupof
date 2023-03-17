@@ -1,12 +1,8 @@
-import { usuario } from '../types/usuarios'
-import { grupo } from '../types/grupos'
-import { rutas } from '../types/rutas'
-
 export type usuarioSchema = {
     usuario: {
          id: string,
          nombre: string,
-         actividades: "Correr" | "Ciclismo",
+         actividades: "Bicicleta" | "Correr",
          amigos: string [], //usuarios con los que interacciona
          grupoAmigos: string [], //Ids de usuarios con los que realiza rutas
          historicoRutas: {

@@ -1,17 +1,19 @@
 {
-    "retos": [
+    "reto": [
         {
-         "id": "R1",
+         "id": "C1",
          "nombre": "El reto de la muerte",
          "rutasReto": [],
-         "tipoActividad": "Bicicleta"
+         "tipoActividad": "Bicicleta",
+         "usuariosRealizandoReto": ["USU1"]
 		},
 
         {
-            "id": "R2",
+            "id": "C2",
             "nombre": "Papita suave",
             "rutasReto": [],
-            "tipoActividad": "Corriendo"
+            "tipoActividad": "Corriendo",
+            "usuariosRealizandoReto": ["USU2"]
         }
 	]
 }

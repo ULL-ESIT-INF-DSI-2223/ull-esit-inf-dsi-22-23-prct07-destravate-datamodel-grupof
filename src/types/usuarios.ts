@@ -1,19 +1,14 @@
-import inquirer from 'inquirer';
-import { rutas } from './rutas'
-import { grupo } from './grupos'
-
-
 export class usuario{
     private id: string
     private nombre: string
-    private actividades: "Correr" | "Ciclismo"
+    private actividades: "Bicicleta" | "Correr"
     private amigos: string [] //usuarios con los que interacciona
     private grupoAmigos: string [] //Ids de usuarios con los que realiza rutas
     //private rutasFavoritas: string []
     //private retosActivos: string []
     private historicoRutas: {fecha: Date; ruta: string } []; //ID de la ruta y fecha
 
-    constructor(id: string, nombre: string, actividades: "Correr" | "Ciclismo", amigos: string [], grupoAmigos: string [], historicoRutas: { fecha: Date; ruta: string }[]) {
+    constructor(id: string, nombre: string, actividades: "Bicicleta" | "Correr", amigos: string [], grupoAmigos: string [], historicoRutas: { fecha: Date; ruta: string }[]) {
             this.id = id
             this.nombre = nombre
             this.actividades = actividades
@@ -29,7 +24,7 @@ export class usuario{
         return this.nombre;
     }
 
-    public getActividades(): "Correr" | "Ciclismo" {
+    public getActividades(): "Bicicleta" | "Correr" {
         return  this.actividades;
     }
 

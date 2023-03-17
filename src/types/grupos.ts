@@ -1,22 +1,9 @@
-import inquirer from 'inquirer';
-import { usuario } from './usuarios'
-import { rutas } from './rutas';
-
 export class grupo {
 
-    id: string; // ID único del grupo
-    nombre: string; // IDs de los miembros del grupo
+    id: string;
+    nombre: string;
     participantes: string[];
-
-    /* estadisticasEntrenamiento: { // Estadísticas de entrenamiento grupal en la semana, mes y año
-      semana: { km: number; desnivel: number };
-      mes: { km: number; desnivel: number }; 
-      anio: { km: number; desnivel: number }; 
-    }; */
-    
-    //clasificacionUsuarios: { userId: string; kmTotales: number; desnivelTotal: number }[]; // Clasificación de los usuarios
-    // rutasFavoritas: string[]; // Rutas favoritas del grupo
-    historicoRutas: { fecha: Date; ruta: string }[]; // Histórico de rutas realizadas por el grupo
+    historicoRutas: { fecha: Date; ruta: string }[];
     // Atributo de usuario creador
     constructor(
       id: string,

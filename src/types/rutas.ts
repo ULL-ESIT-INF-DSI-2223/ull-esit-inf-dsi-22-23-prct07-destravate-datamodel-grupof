@@ -1,6 +1,4 @@
-
-
-export class rutas {
+export class ruta {
     private id: string
     private nombre: string
     private coordenadasInicio: string
@@ -8,10 +6,10 @@ export class rutas {
     private longitudRuta: number
     private desnivelMedio: number
     private usuariosFinalizados: string []
-    private tipoActividad: 'Bicicleta' | 'Corriendo'
+    private tipoActividad: 'Bicicleta' | 'Correr'
     private calificacionMedia: number
 
-    constructor(id: string, nombre: string, coordenadasInicio: string, coordenadasFinal: string, longitudRuta: number, desnivelMedio: number, usuariosFinalizados: string [], tipoActividad: 'Bicicleta' | 'Corriendo', calificacionMedia: number){
+    constructor(id: string, nombre: string, coordenadasInicio: string, coordenadasFinal: string, longitudRuta: number, desnivelMedio: number, usuariosFinalizados: string [], tipoActividad: 'Bicicleta' | 'Correr', calificacionMedia: number){
         this.id = id;
         this.nombre = nombre;
         this.coordenadasInicio = coordenadasInicio;
@@ -79,11 +77,11 @@ export class rutas {
         return this.usuariosFinalizados
     }
 
-    setTipoActividad(tipoActividad: 'Bicicleta' | 'Corriendo'){
+    setTipoActividad(tipoActividad: 'Bicicleta' | 'Correr'){
         this.tipoActividad = tipoActividad
     }
 
-    getTipoActividad(): string {
+    getTipoActividad(): 'Bicicleta' | 'Correr'  {
         return this.tipoActividad
     }
 
@@ -94,8 +92,14 @@ export class rutas {
     getCalificacionMedia(): number {
         return this.calificacionMedia
     }
+
+    public addUsuarioFinalizado(usuario: string){
+        this.usuariosFinalizados.push(usuario)
+    }
+
+    
 }
 
 module.exports = {
-    rutas
+    ruta
 }

@@ -1,6 +1,3 @@
-import { rutas } from '../types/rutas'
-import { usuario } from '../types/usuarios'
-
 export type rutaSchema = {
     ruta: {
         id: string,
@@ -10,7 +7,7 @@ export type rutaSchema = {
         longitudRuta: number,
         desnivelMedio: number,
         usuariosFinalizados: string [], // Cambiar a vector de usuarios
-        tipoActividad: 'Bicicleta' | 'Corriendo',
+        tipoActividad: 'Bicicleta' | 'Correr',
         calificacionMedia: number
     } []
 }
