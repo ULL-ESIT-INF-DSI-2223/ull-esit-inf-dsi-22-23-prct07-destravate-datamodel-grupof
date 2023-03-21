@@ -24,7 +24,7 @@
       "longitudRuta": 15,
       "desnivelMedio": 200,
       "usuariosFinalizados": [],
-      "tipoActividad": "Corriendo",
+      "tipoActividad": "Correr",
       "calificacionMedia": 4.4
     },
     {
@@ -35,7 +35,7 @@
       "longitudRuta": 10,
       "desnivelMedio": 25,
       "usuariosFinalizados": [],
-      "tipoActividad": "Corriendo",
+      "tipoActividad": "Correr",
       "calificacionMedia": 4.2
     },
     {
@@ -46,7 +46,7 @@
       "longitudRuta": 15,
       "desnivelMedio": 300,
       "usuariosFinalizados": [],
-      "tipoActividad": "Corriendo",
+      "tipoActividad": "Correr",
       "calificacionMedia": 4.5
     }
   ]

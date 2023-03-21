@@ -31,7 +31,7 @@ describe('Comprobar clase rutaCollection', () => {
     it('Metodo: getRutasCalificacionMedia(orden: boolean) : ruta[]', () => {
         expect(rutaCollection1.getRutasCalificacionMedia(false)[0].getNombre()).to.be.equal('Ruta de senderismo por el parque nacional');
     });
-    it('Metodo: getRutasActividad(actividad: string) : ruta[] | undefined', () => {
-       // expect(rutaCollection1.getRutasActividad('Bicicleta')[0].getNombre()).to.be.equal('Ruta en bicicleta por la ciudad');
+    it('Metodo: getRutasActividad(actividad: string) : ruta[]', () => {
+       expect(rutaCollection1.getRutasActividad("Bicicleta").length).to.be.equal(1);
     });
 });
