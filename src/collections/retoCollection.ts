@@ -13,7 +13,7 @@ private database: lowdb.LowdbSync<retoSchema>;
 constructor(public coleccion: reto []) {
     this.database = lowdb(new FileSync('src/databases/db_retos.json'));
     if (this.database.has("reto").value()) {
-        let dbItems = this.database.get("reto").value();
+        const dbItems = this.database.get("reto").value();
         dbItems.forEach(item => this.coleccion.push(new reto(item.id, item.nombre, item.rutasReto, item.tipoActividad, item.usuariosRealizandoReto)));
     }
     this.coleccionRetos = coleccion;

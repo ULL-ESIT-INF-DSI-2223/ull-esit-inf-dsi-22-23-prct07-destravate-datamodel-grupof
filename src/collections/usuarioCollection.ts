@@ -19,7 +19,7 @@ private database: lowdb.LowdbSync<usuarioSchema>;
 constructor(public coleccion: usuario []) {
     this.database = lowdb(new FileSync('src/databases/db_usuarios.json'));
     if (this.database.has("usuario").value()) {
-        let dbItems = this.database.get("usuario").value();
+        const dbItems = this.database.get("usuario").value();
         dbItems.forEach(item => this.coleccion.push(new usuario(item.id, item.nombre, item.actividades, item.amigos, item.grupoAmigos, item.historicoRutas)));
     }
     this.coleccionUsuarios = coleccion;
@@ -31,7 +31,7 @@ public getColeccionUsuarios(): usuario[] {
 }
 
 public getHistoricoRutas(id: string): { fecha: Date, ruta: string }[] | undefined {
-    let usuario = this.coleccionUsuarios.find(usuario => usuario.getId() === id)
+    const usuario = this.coleccionUsuarios.find(usuario => usuario.getId() === id)
     return usuario ? usuario.getHistoricoRutas() : undefined;
 
 }
@@ -60,13 +60,13 @@ public removeUsuario(id: string) {
 // Estadísticas de entrenamiento: Cantidad de km y desnivel total acumulados en la semana, mes y año.
 
 public getEstadisticasEntrenamiento(coleccionRutas: rutaCollection ,id: string, tiempo: "semana" | "mes" | "año"): {km: number, desnivel: number } {
-    let usuario = this.coleccionUsuarios.find(usuario => usuario.getId() === id);
+    const usuario = this.coleccionUsuarios.find(usuario => usuario.getId() === id);
     if (usuario) {
-        let historicoRutas = usuario.getHistoricoRutas();
+        const historicoRutas = usuario.getHistoricoRutas();
         let km = 0;
         let desnivel = 0;
-        let fechaActual = new Date();
-        let fechaInicio = new Date();
+        const fechaActual = new Date();
+        const fechaInicio = new Date();
         switch (tiempo) {
             case "semana":
                 fechaInicio.setDate(fechaInicio.getDate() - 7);
@@ -79,9 +79,9 @@ public getEstadisticasEntrenamiento(coleccionRutas: rutaCollection ,id: string, 
                 break;
         }
         historicoRutas?.forEach(historico => {
-            let historicoFecha = new Date(historico.fecha);
+            const historicoFecha = new Date(historico.fecha);
             if (historicoFecha >= fechaInicio && historicoFecha <= fechaActual) {
-                let ruta = coleccionRutas.getColeccionRutas().find(ruta => ruta.getId() === historico.ruta);
+                const ruta = coleccionRutas.getColeccionRutas().find(ruta => ruta.getId() === historico.ruta);
                 if (ruta) {
                     km += ruta.getLongitudRuta()
                     desnivel += ruta.getDesnivelMedio()
@@ -96,12 +96,12 @@ public getEstadisticasEntrenamiento(coleccionRutas: rutaCollection ,id: string, 
 
 public getRutaFavorita(coleccionRutas: rutaCollection ,id_usuario: string): string | string [] | undefined {
     // Retornar solo las 3 primeras
-    let usuario = this.coleccionUsuarios.find(usuario => usuario.getId() === id_usuario);
+    const usuario = this.coleccionUsuarios.find(usuario => usuario.getId() === id_usuario);
     if (usuario) {
-        let historicoRutas = usuario.getHistoricoRutas();
-        let rutasFavoritas: { ruta: string, veces: number }[] = [];
+        const historicoRutas = usuario.getHistoricoRutas();
+        const rutasFavoritas: { ruta: string, veces: number }[] = [];
         historicoRutas?.forEach(historico => {
-            let ruta = rutasFavoritas.find(ruta => ruta.ruta === historico.ruta);
+            const ruta = rutasFavoritas.find(ruta => ruta.ruta === historico.ruta);
             if (ruta) {
                 ruta.veces++;
             } else {
@@ -111,8 +111,8 @@ public getRutaFavorita(coleccionRutas: rutaCollection ,id_usuario: string): stri
         );
         rutasFavoritas.sort((a, b) => b.veces - a.veces);
         // Retornar las 3 rutas favoritas
-        let rutasFavoritasRetorno: string [] = [];
-        let nFavoritas = rutasFavoritas.length > 3 ? 3 : rutasFavoritas.length;
+        const rutasFavoritasRetorno: string [] = [];
+        const nFavoritas = rutasFavoritas.length > 3 ? 3 : rutasFavoritas.length;
         for (let i = 0; i < nFavoritas; i++) {
             rutasFavoritasRetorno.push(rutasFavoritas[i].ruta);
         }
@@ -122,8 +122,8 @@ public getRutaFavorita(coleccionRutas: rutaCollection ,id_usuario: string): stri
 }
 
 public getRetosActivos(coleccionRetos: retoCollection ,id_usuario: string): string[] {
-    let retosActivos: string[] = [];
-    let retos = coleccionRetos.getColeccionRetos();
+    const retosActivos: string[] = [];
+    const retos = coleccionRetos.getColeccionRetos();
     retos ? retos.forEach(reto => {
         if (reto.getUsuariosRealizandoReto().includes(id_usuario)) {
             retosActivos.push(reto.getId());

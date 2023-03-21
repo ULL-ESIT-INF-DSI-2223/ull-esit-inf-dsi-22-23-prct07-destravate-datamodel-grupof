@@ -1,19 +1,23 @@
 {
-    "reto": [
-        {
-         "id": "C1",
-         "nombre": "El reto de la muerte",
-         "rutasReto": [],
-         "tipoActividad": "Bicicleta",
-         "usuariosRealizandoReto": ["USU1"]
-		},
-
-        {
-            "id": "C2",
-            "nombre": "Papita suave",
-            "rutasReto": [],
-            "tipoActividad": "Corriendo",
-            "usuariosRealizandoReto": ["USU2"]
-        }
-	]
+  "reto": [
+    {
+      "id": "C1",
+      "nombre": "El reto de la muerte",
+      "rutasReto": [],
+      "tipoActividad": "Bicicleta",
+      "usuariosRealizandoReto": [
+        "USU1"
+      ]
+    },
+    {
+      "id": "C2",
+      "nombre": "Papita suave",
+      "rutasReto": [],
+      "tipoActividad": "Corriendo",
+      "usuariosRealizandoReto": [
+        "USU2",
+        "USU1"
+      ]
+    }
+  ]
 }

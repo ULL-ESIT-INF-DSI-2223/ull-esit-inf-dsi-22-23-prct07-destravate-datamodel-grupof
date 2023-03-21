@@ -39,17 +39,6 @@ export class usuario{
         return this.historicoRutas
     }
 
-    public getEstadisticas(){
-        
-    }
-
-    public getRutasFavoritas(){
-
-    }
-
-    public getRetosActivos(){
-        
-    }
     
 }
 

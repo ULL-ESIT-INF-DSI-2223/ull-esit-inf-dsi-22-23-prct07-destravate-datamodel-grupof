@@ -9,7 +9,7 @@
     "ej2": "tsc-watch --onSuccess \"node dist/ejercicio02/ejercicio02.js\"",
     "ej3": "tsc-watch --onSuccess \"node dist/ejercicio03/ejercicio03.js\"",
     "doc": "typedoc",
-    "test": "nyc mocha -r ts-node/register 'tests/**/*.ts'",
+    "test": "mocha -r ts-node/register 'tests/**/*.ts'",
     "test1": "mocha -r ts-node/register 'tests/ejercicio01.spec.ts'",
     "test2": "mocha -r ts-node/register 'tests/ejercicio02.spec.ts'",
     "test3": "mocha -r ts-node/register 'tests/ejercicio03.spec.ts'",

@@ -10,7 +10,8 @@
       "usuariosFinalizados": [
         "USU5",
         "USU7",
-        "USU2"
+        "USU2",
+        "USU1"
       ],
       "tipoActividad": "Bicicleta",
       "calificacionMedia": 3.8
@@ -24,7 +25,7 @@
       "desnivelMedio": 200,
       "usuariosFinalizados": [],
       "tipoActividad": "Corriendo",
-      "calificacionMedia": 4.5
+      "calificacionMedia": 4.4
     },
     {
       "id": "R3",

@@ -4,8 +4,6 @@ import lowdb from "lowdb";
 import FileSync from "lowdb/adapters/FileSync";
 
 import { rutaCollection } from '../collections/rutaCollection'
-import { ruta } from '../types/rutas';
-import { usuarioCollection } from './usuarioCollection';
 
 export class grupoCollection {
 
@@ -16,7 +14,7 @@ private database: lowdb.LowdbSync<grupoSchema>;
 constructor(public coleccion: grupo []) {
     this.database = lowdb(new FileSync('src/databases/db_grupos.json'));
     if (this.database.has("grupo").value()) {
-        let dbItems = this.database.get("grupo").value();
+        const dbItems = this.database.get("grupo").value();
         dbItems.forEach(item => this.coleccion.push(new grupo(item.id, item.nombre, item.participantes, item.historicoRutas)));
     }
     this.coleccionGrupos = coleccion;
@@ -27,7 +25,7 @@ public getColeccionGrupos(): grupo [] {
 
 }
 
-public addUsuario(grupo: grupo) {
+public addGrupo(grupo: grupo) {
     this.coleccionGrupos.push(grupo);
     const dbGrupo = {
         id: grupo.getId(),
@@ -38,7 +36,7 @@ public addUsuario(grupo: grupo) {
     this.database.get("grupo").push(dbGrupo).write();
 }
 
-public removeUsuario(id: string) {
+public removeGrupo(id: string) {
     const grupoAEliminar = this.coleccionGrupos.find(grupo => grupo.getId() === id);
     if (grupoAEliminar) {
         this.coleccionGrupos = this.coleccionGrupos.filter(grupo => grupo.getId() !== id);
@@ -47,13 +45,13 @@ public removeUsuario(id: string) {
 }
 
 public getEstadisticasEntrenamiento(coleccionRutas: rutaCollection ,id: string, tiempo: "semana" | "mes" | "año"): {km: number, desnivel: number } {
-    let grupo = this.coleccionGrupos.find(grupo => grupo.getId() === id);
+    const grupo = this.coleccionGrupos.find(grupo => grupo.getId() === id);
     if (grupo) {
-        let historicoRutas = grupo.getHistoricoRutas();
+        const historicoRutas = grupo.getHistoricoRutas();
         let km = 0;
         let desnivel = 0;
-        let fechaActual = new Date();
-        let fechaInicio = new Date();
+        const fechaActual = new Date();
+        const fechaInicio = new Date();
         switch (tiempo) {
             case "semana":
                 fechaInicio.setDate(fechaInicio.getDate() - 7);
@@ -66,15 +64,16 @@ public getEstadisticasEntrenamiento(coleccionRutas: rutaCollection ,id: string, 
                 break;
         }
         historicoRutas?.forEach(historico => {
-            let historicoFecha = new Date(historico.fecha);
+            const historicoFecha = new Date(historico.fecha);
             if (historicoFecha >= fechaInicio && historicoFecha <= fechaActual) {
-                let ruta = coleccionRutas.getColeccionRutas().find(ruta => ruta.getId() === historico.ruta);
+                const ruta = coleccionRutas.getColeccionRutas().find(ruta => ruta.getId() === historico.ruta);
                 if (ruta) {
                     km += ruta.getLongitudRuta()
                     desnivel += ruta.getDesnivelMedio()
                 }
             }
         });
+        
         return { km: km, desnivel: desnivel };
     }
     return { km: 0, desnivel: 0 };
@@ -85,18 +84,18 @@ Clasificación de los usuarios: Ranking de los usuarios que más entrenamientos 
 , es decir, ordenar los usuarios por la cantidad de km totales o desnivel total que han acumulado.
 */
 
-public getClaificacionUsuarios(coleccionRutas: rutaCollection ,id: string, tipo: "km" | "desnivel"): {usuario: string, valor: number}[] {
-    let grupo = this.coleccionGrupos.find(grupo => grupo.getId() === id);
+public getClasificacionUsuarios(coleccionRutas: rutaCollection ,id: string, tipo: "km" | "desnivel"): {usuario: string, valor: number}[] {
+    const grupo = this.coleccionGrupos.find(grupo => grupo.getId() === id);
     if (grupo) {
-        let historicoRutas = grupo.getHistoricoRutas();
-        let usuarios = grupo.getParticipantes()
-        let clasificacion: {usuario: string, valor: number}[] = [];
+        const historicoRutas = grupo.getHistoricoRutas();
+        const usuarios = grupo.getParticipantes()
+        const clasificacion: {usuario: string, valor: number}[] = [];
         usuarios?.forEach(usuario => {
             let km = 0;
             let desnivel = 0;
             historicoRutas?.forEach(historico => {
                 if (historico.usuarios.includes(usuario)) {
-                    let ruta = coleccionRutas.getColeccionRutas().find(ruta => ruta.getId() === historico.ruta);
+                    const ruta = coleccionRutas.getColeccionRutas().find(ruta => ruta.getId() === historico.ruta);
                     if (ruta) {
                         km += ruta.getLongitudRuta()
                         desnivel += ruta.getDesnivelMedio()
@@ -113,12 +112,12 @@ public getClaificacionUsuarios(coleccionRutas: rutaCollection ,id: string, tipo:
 
 // Rutas favoritas del grupo: Rutas que los usuarios del grupo han realizado con mayor frecuencia en sus salidas conjuntas.
 public getRutasFavoritas(coleccionRutas: rutaCollection ,id: string): {ruta: string, frecuencia: number}[] {
-    let grupo = this.coleccionGrupos.find(grupo => grupo.getId() === id);
+    const grupo = this.coleccionGrupos.find(grupo => grupo.getId() === id);
     if (grupo) {
-        let historicoRutas = grupo.getHistoricoRutas();
-        let rutas: {ruta: string, frecuencia: number}[] = [];
+        const historicoRutas = grupo.getHistoricoRutas();
+        const rutas: {ruta: string, frecuencia: number}[] = [];
         historicoRutas?.forEach(historico => {
-            let ruta = rutas.find(ruta => ruta.ruta === historico.ruta);
+            const ruta = rutas.find(ruta => ruta.ruta === historico.ruta);
             if (ruta) {
                 ruta.frecuencia++;
             } else {

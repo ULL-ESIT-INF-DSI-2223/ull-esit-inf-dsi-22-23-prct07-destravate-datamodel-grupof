@@ -18,7 +18,7 @@ export class rutaCollection {
   constructor(public coleccion: ruta[]) {
     this.database = lowdb(new FileSync("src/databases/db_rutas.json"));
     if (this.database.has("ruta").value()) {
-      let dbItems = this.database.get("ruta").value();
+      const dbItems = this.database.get("ruta").value();
       dbItems.forEach((item) =>
         this.coleccion.push(
           new ruta(
@@ -58,7 +58,7 @@ export class rutaCollection {
     this.database.get("ruta").push(dbRuta).write();
   }
 
-  public removeUsuario(id: string) {
+  public removeRuta(id: string) {
     const rutaAEliminar = this.coleccionRutas.find(
       (ruta) => ruta.getId() === id
     );

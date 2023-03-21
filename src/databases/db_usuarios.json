@@ -1,6 +1,5 @@
 {
   "usuario": [
-
     {
       "id": "USU1",
       "nombre": "Paco",
@@ -17,63 +16,43 @@
           "ruta": "R1"
         },
         {
-            "fecha": "2023-03-13T18:25:43.511Z",
-            "ruta": "R2"
-          },
-        {
-            "fecha": "2023-01-30T18:25:43.511Z",
-            "ruta": "R2"
-          },
-        {
-            "fecha": "2022-01-30T18:25:43.511Z",
-            "ruta": "R2"
-          },
-        {
-            "fecha": "2023-02-14T18:25:43.511Z",
-            "ruta": "R2"
-          },
-        {
-            "fecha": "2022-06-13T18:25:43.511Z",
-            "ruta": "R3"
-          },
-        {
-            "fecha": "2022-07-13T18:25:43.511Z",
-            "ruta": "R3"
-          },
-        {
-            "fecha": "2022-07-08T18:25:43.511Z",
-            "ruta": "R3"
-          },
-        {
-            "fecha": "2022-05-12T18:25:43.511Z",
-            "ruta": "R4"
-          },
-        {
-            "fecha": "2023-02-12T18:25:43.511Z",
-            "ruta": "R4"
-          }
-
-
-      ]
-    },
-    {
-      "id": "USU2",
-      "nombre": "Rodri",
-      "actividades": "Ciclismo",
-      "amigos": [
-        "USU1"
-      ],
-      "grupoAmigos": [
-        "GR1"
-      ],
-      "historicoRutas": [
-        {
-          "fecha": "2022-05-12",
+          "fecha": "2023-03-13T18:25:43.511Z",
           "ruta": "R2"
+        },
+        {
+          "fecha": "2023-01-30T18:25:43.511Z",
+          "ruta": "R2"
+        },
+        {
+          "fecha": "2022-01-30T18:25:43.511Z",
+          "ruta": "R2"
+        },
+        {
+          "fecha": "2023-02-14T18:25:43.511Z",
+          "ruta": "R2"
+        },
+        {
+          "fecha": "2022-06-13T18:25:43.511Z",
+          "ruta": "R3"
+        },
+        {
+          "fecha": "2022-07-13T18:25:43.511Z",
+          "ruta": "R3"
+        },
+        {
+          "fecha": "2022-07-08T18:25:43.511Z",
+          "ruta": "R3"
+        },
+        {
+          "fecha": "2022-05-12T18:25:43.511Z",
+          "ruta": "R4"
+        },
+        {
+          "fecha": "2023-02-12T18:25:43.511Z",
+          "ruta": "R4"
         }
       ]
     },
-
     {
       "id": "USU3",
       "nombre": "Juan",
@@ -94,7 +73,7 @@
     {
       "id": "USU4",
       "nombre": "Pedro",
-      "actividades": "Ciclismo",
+      "actividades": "Bicicleta",
       "amigos": [
         "USU3"
       ],
@@ -108,210 +87,200 @@
         }
       ]
     },
-    
+    {
+      "id": "USU5",
+      "nombre": "Maria",
+      "actividades": "Correr",
+      "amigos": [
+        "USU6"
+      ],
+      "grupoAmigos": [
+        "GR3"
+      ],
+      "historicoRutas": [
         {
-        "id": "USU5",
-        "nombre": "Maria",
-        "actividades": "Correr",
-        "amigos": [
-            "USU6"
-        ],
-        "grupoAmigos": [
-            "GR3"
-        ],
-        "historicoRutas": [
-            {
-            "fecha": "2022-05-12",
-            "ruta": "R5"
-            }
-        ]
-        },
-        {
-        "id": "USU6",
-        "nombre": "Ana",
-        "actividades": "Ciclismo",
-        "amigos": [
-            "USU5"
-        ],
-        "grupoAmigos": [
-            "GR3"
-        ],
-        "historicoRutas": [
-            {
-            "fecha": "2022-05-12",
-            "ruta": "R6"
-            }
-        ]
-        },
-        {
-            "id": "USU7",
-            "nombre": "Lola",
-            "actividades": "Correr",
-            "amigos": [
-                "USU5"
-            ],
-            "grupoAmigos": [
-                "GR3"
-            ],
-            "historicoRutas": [
-                {
-                "fecha": "2022-05-12",
-                "ruta": "R4"
-                }
-            ]
-        },
-
-        {
-            "id": "USU8",
-            "nombre": "Javi",
-            "actividades": "Ciclismo",
-            "amigos": [
-                "USU3"
-            ],
-            "grupoAmigos": [
-                "GR1"
-            ],
-            "historicoRutas": [
-                {
-                "fecha": "2022-05-12",
-                "ruta": "R6"
-                }
-            ]
-        },
-
-        {
-            "id": "USU9",
-            "nombre": "Paco",
-            "actividades": "Correr",
-            "amigos": [
-                "USU2"
-            ],
-            "grupoAmigos": [
-                "GR1"
-            ],
-            "historicoRutas": [
-                {
-                "fecha": "2022-05-12",
-                "ruta": "R10"
-                }
-            ]
-        },
-        {
-            "id": "USU10",
-            "nombre": "Rodri",
-            "actividades": "Ciclismo",
-            "amigos": [
-                "USU1"
-            ],
-            "grupoAmigos": [
-                "GR1"
-            ],
-            "historicoRutas": [
-                {
-                "fecha": "2022-05-12",
-                "ruta": "R9"
-                }
-            ]
-        },
-
-        {
-            "id": "USU11",
-            "nombre": "Juan",
-            "actividades": "Correr",
-            "amigos": [
-                "USU4"
-            ],
-            "grupoAmigos": [
-                "GR2"
-            ],
-            "historicoRutas": [
-                {
-                "fecha": "2022-05-12",
-                "ruta": "R3"
-                }
-            ]
-        },
-
-        {
-            "id": "USU12",
-            "nombre": "Pedro",
-            "actividades": "Ciclismo",
-            "amigos": [
-                "USU3"
-            ],
-            "grupoAmigos": [
-                "GR2"
-            ],
-            "historicoRutas": [
-                {
-                "fecha": "2022-05-12",
-                "ruta": "R4"
-                }
-            ]
-        },
-        
-        {
-            "id": "USU13",
-            "nombre": "Maria",
-            "actividades": "Correr",
-            "amigos": [
-                "USU6"
-            ],
-            "grupoAmigos": [
-                "GR2"
-            ],
-            "historicoRutas": [
-                {
-                "fecha": "2022-05-12",
-                "ruta": "R5"
-                }
-            ]
-        },
-        {
-            "id": "USU14",
-            "nombre": "Ana",
-            "actividades": "Ciclismo",
-            "grupoAmigos": [
-                "GR3"
-            ],
-            "historicoRutas": [
-                {
-                "fecha": "2022-05-12",
-                "ruta": "R6"
-                }
-            ]
-        },
-
-        {
-
-            "id": "USU15",
-            "nombre": "Amancio",
-            "actividades": "Correr",
-            "grupoAmigos": [
-                "GR1"
-            ],
-            "historicoRutas": [
-                {
-                "fecha": "2022-05-12",
-                "ruta": "R9"
-                }
-            ]
-        },
-
-        {
-
-            "id": "USU16",
-            "nombre": "Lola",
-            "actividades": "Correr",
-            "grupoAmigos": [
-                "GR3"
-            ],
-            "historicoRutas": [
-                {
-                "fecha": "2022-05-12",
-                "ruta": "R8"
-                }
-            ]
+          "fecha": "2022-05-12",
+          "ruta": "R5"
         }
+      ]
+    },
+    {
+      "id": "USU6",
+      "nombre": "Ana",
+      "actividades": "Bicicleta",
+      "amigos": [
+        "USU5"
+      ],
+      "grupoAmigos": [
+        "GR3"
+      ],
+      "historicoRutas": [
+        {
+          "fecha": "2022-05-12",
+          "ruta": "R6"
+        }
+      ]
+    },
+    {
+      "id": "USU7",
+      "nombre": "Lola",
+      "actividades": "Correr",
+      "amigos": [
+        "USU5"
+      ],
+      "grupoAmigos": [
+        "GR3"
+      ],
+      "historicoRutas": [
+        {
+          "fecha": "2022-05-12",
+          "ruta": "R4"
+        }
+      ]
+    },
+    {
+      "id": "USU8",
+      "nombre": "Javi",
+      "actividades": "Bicicleta",
+      "amigos": [
+        "USU3"
+      ],
+      "grupoAmigos": [
+        "GR1"
+      ],
+      "historicoRutas": [
+        {
+          "fecha": "2022-05-12",
+          "ruta": "R6"
+        }
+      ]
+    },
+    {
+      "id": "USU9",
+      "nombre": "Paco",
+      "actividades": "Correr",
+      "amigos": [
+        "USU2"
+      ],
+      "grupoAmigos": [
+        "GR1"
+      ],
+      "historicoRutas": [
+        {
+          "fecha": "2022-05-12",
+          "ruta": "R10"
+        }
+      ]
+    },
+    {
+      "id": "USU10",
+      "nombre": "Rodri",
+      "actividades": "Bicicleta",
+      "amigos": [
+        "USU1"
+      ],
+      "grupoAmigos": [
+        "GR1"
+      ],
+      "historicoRutas": [
+        {
+          "fecha": "2022-05-12",
+          "ruta": "R9"
+        }
+      ]
+    },
+    {
+      "id": "USU11",
+      "nombre": "Juan",
+      "actividades": "Correr",
+      "amigos": [
+        "USU4"
+      ],
+      "grupoAmigos": [
+        "GR2"
+      ],
+      "historicoRutas": [
+        {
+          "fecha": "2022-05-12",
+          "ruta": "R3"
+        }
+      ]
+    },
+    {
+      "id": "USU12",
+      "nombre": "Pedro",
+      "actividades": "Bicicleta",
+      "amigos": [
+        "USU3"
+      ],
+      "grupoAmigos": [
+        "GR2"
+      ],
+      "historicoRutas": [
+        {
+          "fecha": "2022-05-12",
+          "ruta": "R4"
+        }
+      ]
+    },
+    {
+      "id": "USU13",
+      "nombre": "Maria",
+      "actividades": "Correr",
+      "amigos": [
+        "USU6"
+      ],
+      "grupoAmigos": [
+        "GR2"
+      ],
+      "historicoRutas": [
+        {
+          "fecha": "2022-05-12",
+          "ruta": "R5"
+        }
+      ]
+    },
+    {
+      "id": "USU14",
+      "nombre": "Ana",
+      "actividades": "Bicicleta",
+      "grupoAmigos": [
+        "GR3"
+      ],
+      "historicoRutas": [
+        {
+          "fecha": "2022-05-12",
+          "ruta": "R6"
+        }
+      ]
+    },
+    {
+      "id": "USU15",
+      "nombre": "Amancio",
+      "actividades": "Correr",
+      "grupoAmigos": [
+        "GR1"
+      ],
+      "historicoRutas": [
+        {
+          "fecha": "2022-05-12",
+          "ruta": "R9"
+        }
+      ]
+    },
+    {
+      "id": "USU16",
+      "nombre": "Lola",
+      "actividades": "Correr",
+      "grupoAmigos": [
+        "GR3"
+      ],
+      "historicoRutas": [
+        {
+          "fecha": "2022-05-12",
+          "ruta": "R8"
+        }
+      ]
+    }
   ]
 }

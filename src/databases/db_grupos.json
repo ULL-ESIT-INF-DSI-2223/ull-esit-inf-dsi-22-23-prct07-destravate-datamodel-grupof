@@ -1,41 +1,77 @@
 {
-    "grupo": [
+  "grupo": [
+    {
+      "id": "G1",
+      "nombre": "Grupo de aventureros",
+      "participantes": [
+        "USU1",
+        "USU2"
+      ],
+      "historicoRutas": [
         {
-            "id": "G1",
-            "nombre": "Grupo de aventureros",
-            "participantes": [
-                "USU1",
-                "USU2"
-            ],
-            "historicoRutas": [
-                {
-                    "fecha": "2022-05-12",
-                    "ruta": "R2",
-                    "usuarios": [
-                        "USU1",
-                        "USU2"
-                    ]
-                },
-                {
-                    "fecha": "2022-05-12",
-                    "ruta": "R2",
-                    "usuarios": [
-                        "USU1"
-                    ]
-                }
-            ]
+          "fecha": "2022-05-12T18:25:43.511Z",
+          "ruta": "R2",
+          "usuarios": [
+            "USU1",
+            "USU2"
+          ]
         },
         {
-            "id": "G2",
-            "nombre": "Grupo de amigos ciclistas",
-            "participantes": [],
-            "historicoRutas": []
-        },
-        {
-            "id": "G3",
-            "nombre": "Grupo de caminatas de la muerte",
-            "participantes": [],
-            "historicoRutas": []
+          "fecha": "2023-03-12T18:25:43.511Z",
+          "ruta": "R2",
+          "usuarios": [
+            "USU1"
+          ]
         }
-    ]
+      ]
+    },
+    {
+      "id": "G2",
+      "nombre": "Grupo de amigos ciclistas",
+      "participantes": [],
+      "historicoRutas": [
+        {
+          "fecha": "2023-03-12T18:25:43.511Z",
+          "ruta": "R3",
+          "usuarios": [
+            "USU1"
+          ]
+        },
+        {
+          "fecha": "2023-03-12T18:25:43.511Z",
+          "ruta": "R3",
+          "usuarios": [
+            "USU1"
+          ]
+        },
+        {
+          "fecha": "2023-03-12T18:25:43.511Z",
+          "ruta": "R4",
+          "usuarios": [
+            "USU1"
+          ]
+        },
+        {
+          "fecha": "2023-03-12T18:25:43.511Z",
+          "ruta": "R4",
+          "usuarios": [
+            "USU1"
+          ]
+        },
+        {
+          "fecha": "2023-03-12T18:25:43.511Z",
+          "ruta": "R5",
+          "usuarios": [
+            "USU1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "G3",
+      "nombre": "Grupo de caminatas de la muerte",
+      "participantes": [],
+      "historicoRutas": []
+    }
+  ]
 }
