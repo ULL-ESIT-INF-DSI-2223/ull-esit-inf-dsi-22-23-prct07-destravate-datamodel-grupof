@@ -85,4 +85,29 @@ Clasificación de los usuarios: Ranking de los usuarios que más entrenamientos 
 , es decir, ordenar los usuarios por la cantidad de km totales o desnivel total que han acumulado.
 */
 
+public getClaificacionUsuarios(coleccionRutas: rutaCollection ,id: string, tipo: "km" | "desnivel"): {usuario: string, valor: number}[] {
+    let grupo = this.coleccionGrupos.find(grupo => grupo.getId() === id);
+    if (grupo) {
+        let historicoRutas = grupo.getHistoricoRutas();
+        let usuarios = grupo.getParticipantes()
+        let clasificacion: {usuario: string, valor: number}[] = [];
+        usuarios?.forEach(usuario => {
+            let km = 0;
+            let desnivel = 0;
+            historicoRutas?.forEach(historico => {
+                if (historico.usuarios.includes(usuario)) {
+                    let ruta = coleccionRutas.getColeccionRutas().find(ruta => ruta.getId() === historico.ruta);
+                    if (ruta) {
+                        km += ruta.getLongitudRuta()
+                        desnivel += ruta.getDesnivelMedio()
+                    }
+                }
+            });
+            clasificacion.push({usuario: usuario, valor: tipo === "km" ? km : desnivel});
+        });
+        clasificacion.sort((a, b) => b.valor - a.valor);
+        return clasificacion;
+    }
+    return [];
+}
 }

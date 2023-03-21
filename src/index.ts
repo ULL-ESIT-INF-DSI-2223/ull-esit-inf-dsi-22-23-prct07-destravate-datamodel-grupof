@@ -35,3 +35,4 @@ if (visible == 4) {
 //console.log(usuarioCollectionPrueba.getRutaFavorita(rutaCollectionPrueba, "USU2"))
 //console.log(usuarioCollectionPrueba.getRetosActivos(retoCollectionPrueba, "USU1"))
 //console.log(grupoCollectionPrueba.getEstadisticasEntrenamiento(rutaCollectionPrueba, "G1", "año"))
+//console.log(grupoCollectionPrueba.getClaificacionUsuarios(rutaCollectionPrueba, "G1", "km"))

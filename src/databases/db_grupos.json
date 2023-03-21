@@ -3,22 +3,34 @@
         {
             "id": "G1",
             "nombre": "Grupo de aventureros",
-            "participantes": ["USU1", "USU2"],
+            "participantes": [
+                "USU1",
+                "USU2"
+            ],
             "historicoRutas": [
                 {
-                  "fecha": "2022-05-12",
-                  "ruta": "R2"
+                    "fecha": "2022-05-12",
+                    "ruta": "R2",
+                    "usuarios": [
+                        "USU1",
+                        "USU2"
+                    ]
+                },
+                {
+                    "fecha": "2022-05-12",
+                    "ruta": "R2",
+                    "usuarios": [
+                        "USU1"
+                    ]
                 }
-              ]
+            ]
         },
-
         {
             "id": "G2",
             "nombre": "Grupo de amigos ciclistas",
             "participantes": [],
             "historicoRutas": []
         },
-
         {
             "id": "G3",
             "nombre": "Grupo de caminatas de la muerte",
