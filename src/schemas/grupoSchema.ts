@@ -6,6 +6,7 @@ export type grupoSchema = {
         historicoRutas: {
             fecha: Date,
             ruta: string,
+            usuarios: string[]
         }[]
     } []
 }

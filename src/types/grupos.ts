@@ -3,13 +3,13 @@ export class grupo {
     id: string;
     nombre: string;
     participantes: string[];
-    historicoRutas: { fecha: Date; ruta: string }[];
+    historicoRutas: { fecha: Date; ruta: string, usuarios: string [] }[];
     // Atributo de usuario creador
     constructor(
       id: string,
       nombre: string,
       participantes: string[],
-      historicoRutas: { fecha: Date; ruta: string }[],
+      historicoRutas: { fecha: Date; ruta: string, usuarios: string [] }[],
       
     ) {
       this.id = id;
@@ -32,7 +32,7 @@ export class grupo {
         return this.participantes;
     }
 
-    getHistoricoRutas(): { fecha: Date; ruta: string }[] {
+    getHistoricoRutas(): { fecha: Date; ruta: string, usuarios: string [] }[] {
         return this.historicoRutas;
     }
   }
