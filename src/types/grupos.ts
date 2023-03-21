@@ -35,14 +35,6 @@ export class grupo {
     getHistoricoRutas(): { fecha: Date; ruta: string }[] {
         return this.historicoRutas;
     }
-
-    getEstadisticas() {
-
-    }
-
-    getRutasFavoritas(){
-
-    }
   }
 
   module.exports = {

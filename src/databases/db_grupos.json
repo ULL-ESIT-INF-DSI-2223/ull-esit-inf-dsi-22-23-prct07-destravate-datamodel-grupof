@@ -3,8 +3,13 @@
         {
             "id": "G1",
             "nombre": "Grupo de aventureros",
-            "participantes": [],
-            "historicoRutas": []
+            "participantes": ["USU1", "USU2"],
+            "historicoRutas": [
+                {
+                  "fecha": "2022-05-12",
+                  "ruta": "R2"
+                }
+              ]
         },
 
         {
