@@ -110,4 +110,25 @@ public getClaificacionUsuarios(coleccionRutas: rutaCollection ,id: string, tipo:
     }
     return [];
 }
+
+// Rutas favoritas del grupo: Rutas que los usuarios del grupo han realizado con mayor frecuencia en sus salidas conjuntas.
+public getRutasFavoritas(coleccionRutas: rutaCollection ,id: string): {ruta: string, frecuencia: number}[] {
+    let grupo = this.coleccionGrupos.find(grupo => grupo.getId() === id);
+    if (grupo) {
+        let historicoRutas = grupo.getHistoricoRutas();
+        let rutas: {ruta: string, frecuencia: number}[] = [];
+        historicoRutas?.forEach(historico => {
+            let ruta = rutas.find(ruta => ruta.ruta === historico.ruta);
+            if (ruta) {
+                ruta.frecuencia++;
+            } else {
+                rutas.push({ruta: historico.ruta, frecuencia: 1});
+            }
+        });
+        rutas.sort((a, b) => b.frecuencia - a.frecuencia);
+        // Solo devolvemos las 3 primeras
+        return rutas.slice(0, 3);
+    }
+    return [];
+}
 }
