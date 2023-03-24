@@ -42,7 +42,7 @@
     "typedoc": "^0.23.26"
   },
   "dependencies": {
-    "inquirer": "^9.1.4",
+    "inquirer": "^7.3.3",
     "lowdb": "^1.0.0",
     "sinon": "^15.0.1"
   }
