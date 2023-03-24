@@ -4,6 +4,7 @@ import lowdb from "lowdb";
 import FileSync from "lowdb/adapters/FileSync";
 import { rutaCollection } from './rutaCollection';
 import { retoCollection } from './retoCollection';
+import { grupoCollection } from './grupoCollection';
 /**
  * Usuarios:
 Alfabéticamente por nombre del usuario, ascendente y descendente.
@@ -20,7 +21,7 @@ constructor(public coleccion: usuario []) {
     this.database = lowdb(new FileSync('src/databases/db_usuarios.json'));
     if (this.database.has("usuario").value()) {
         const dbItems = this.database.get("usuario").value();
-        dbItems.forEach(item => this.coleccion.push(new usuario(item.id, item.nombre, item.actividades, item.amigos, item.grupoAmigos, item.historicoRutas)));
+        dbItems.forEach(item => this.coleccion.push(new usuario(item.id, item.nombre, item.actividades, item.amigos, item.historicoRutas)));
     }
     this.coleccionUsuarios = coleccion;
 }
@@ -43,7 +44,6 @@ public addUsuario(usuario: usuario) {
         nombre: usuario.getNombre(),
         actividades: usuario.getActividades(),
         amigos: usuario.getAmigos(),
-        grupoAmigos: usuario.getGrupoAmigos(),
         historicoRutas: usuario.getHistoricoRutas()
     }
     this.database.get("usuario").push(dbUsuario).write();
@@ -56,6 +56,15 @@ public removeUsuario(id: string) {
         this.database.get("usuario").remove({ id: id }).write();
     }
 }
+
+public ordenarUsuariosPorNombre(orden: "ascendente" | "descendente"): usuario[] {
+    if (orden === "ascendente") {
+        return this.coleccionUsuarios.sort((a, b) => a.getNombre().localeCompare(b.getNombre()));
+    } else {
+        return this.coleccionUsuarios.sort((a, b) => b.getNombre().localeCompare(a.getNombre()));
+    }
+}
+
 
 // Estadísticas de entrenamiento: Cantidad de km y desnivel total acumulados en la semana, mes y año.
 
@@ -131,6 +140,51 @@ public getRetosActivos(coleccionRetos: retoCollection ,id_usuario: string): stri
     }
     ) : undefined;
     return retosActivos;
+}
+
+public getUsuario(id: string): void {
+    let user = this.coleccionUsuarios.find(usuario => usuario.getId() === id);
+    console.log("ID = " + user?.getId());
+    console.log("Nombre = " + user?.getNombre());
+    console.log("Actividades = " + user?.getActividades());
+}
+
+public getAmigos(id: string): string[] | undefined {
+    let user = this.coleccionUsuarios.find(usuario => usuario.getId() === id);
+    return user?.getAmigos();
+}
+
+public addAmigo(id: string, idAmigo: string): string {
+    let user = this.coleccionUsuarios.find(usuario => usuario.getId() === id);
+    if (!user) return "No se ha encontrado el usuario";
+    if (!this.coleccionUsuarios.find(usuario => usuario.getId() === idAmigo)) return "No se ha encontrado el amigo";
+    if (user.getAmigos()?.includes(idAmigo)) return "El usuario ya es amigo";
+    if (id === idAmigo) return "No puedes añadirte a ti mismo";
+    user.getAmigos()?.push(idAmigo);
+    this.database.get("usuario").find({ id: id }).assign({ amigos: user?.getAmigos() }).write();
+    return "Amigo añadido";
+}
+
+public removeAmigo(id: string, idAmigo: string): string {
+    let user = this.coleccionUsuarios.find(usuario => usuario.getId() === id);
+    if (!user) return "No se ha encontrado el usuario";
+    if (!user.getAmigos()?.includes(idAmigo)) return "El usuario no es amigo";
+    user.getAmigos()?.splice(user.getAmigos()?.indexOf(idAmigo), 1);
+    this.database.get("usuario").find({ id: id }).assign({ amigos: user?.getAmigos() }).write();
+    return "Amigo eliminado";
+}
+
+public getGrupos(coleccionGrupos: grupoCollection, id_user: string): string[] {
+
+    let gruposActivos = new Set<string>();
+    let grupos = coleccionGrupos.getColeccionGrupos();
+    grupos?.forEach(grupo => {
+        if (grupo.getParticipantes().includes(id_user)) {
+            gruposActivos.add(grupo.getId());
+        }
+    }
+    );
+    return Array.from(gruposActivos);
 }
 
 }

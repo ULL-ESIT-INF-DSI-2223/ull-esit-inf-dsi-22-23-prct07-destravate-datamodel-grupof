@@ -15,7 +15,7 @@ constructor(public coleccion: grupo []) {
     this.database = lowdb(new FileSync('src/databases/db_grupos.json'));
     if (this.database.has("grupo").value()) {
         const dbItems = this.database.get("grupo").value();
-        dbItems.forEach(item => this.coleccion.push(new grupo(item.id, item.nombre, item.participantes, item.historicoRutas)));
+        dbItems.forEach(item => this.coleccion.push(new grupo(item.id, item.nombre, item.participantes, item.historicoRutas, item.creador)));
     }
     this.coleccionGrupos = coleccion;
 }
@@ -31,7 +31,8 @@ public addGrupo(grupo: grupo) {
         id: grupo.getId(),
         nombre: grupo.getNombre(),
         participantes: grupo.getParticipantes(),
-        historicoRutas: grupo.getHistoricoRutas()
+        historicoRutas: grupo.getHistoricoRutas(),
+        creador: grupo.getCreador(),
     }
     this.database.get("grupo").push(dbGrupo).write();
 }
@@ -41,6 +42,22 @@ public removeGrupo(id: string) {
     if (grupoAEliminar) {
         this.coleccionGrupos = this.coleccionGrupos.filter(grupo => grupo.getId() !== id);
         this.database.get("grupo").remove({ id: id }).write();
+    }
+}
+
+public ordenarGruposPorNombre(orden: "ascendente" | "descendente"): grupo [] {
+    if (orden === "ascendente") {
+        return this.coleccionGrupos.sort((a, b) => a.getNombre().localeCompare(b.getNombre()));
+    } else {
+        return this.coleccionGrupos.sort((a, b) => b.getNombre().localeCompare(a.getNombre()));
+    }
+}
+
+public ordenarGruposPorParticipantes(orden: "ascendente" | "descendente"): grupo [] {
+    if (orden === "ascendente") {
+        return this.coleccionGrupos.sort((a, b) => a.getParticipantes()?.length - b.getParticipantes()?.length);
+    } else {
+        return this.coleccionGrupos.sort((a, b) => b.getParticipantes()?.length - a.getParticipantes()?.length);
     }
 }
 

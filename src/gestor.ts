@@ -58,6 +58,7 @@ export class gestor {
             if (usuario) {
                 this.usuarioActual = usuario.getId();
                 console.log("Bienvenido " + usuario.getNombre() + " con ID: " + usuario.getId());
+                this.menuUsuario();
             } else {
                 console.log("El usuario no existe, por favor, regístrese: ");
                 this.registro();
@@ -111,11 +112,339 @@ export class gestor {
 });
 }
 
-public createUser(id: string, nombre:string, actividades: "Bicicleta" | "Correr") {
-  const nuevousuario = new usuario(id, nombre, actividades, [], [], []);
-  this.coleccionUsuarios.addUsuario(nuevousuario);
-  }
+menuUsuario() {
+    inquirer.prompt({
+        type: 'list',
+        name: 'menu',
+        message: 'Elige una opción',
+        choices: ["Datos de la cuenta", "Usuarios del sistema", "Estadisticas", "Amigos", "Grupos", "Rutas", "Retos", "Salir"]
+    }).then((respuesta) => {
+        switch (respuesta.menu) {
+            case "Datos de la cuenta":
+                this.coleccionUsuarios.getUsuario(this.usuarioActual)
+                setTimeout(() => {
+                    this.menuUsuario();
+                }, 2000); 
+                break;
+            case "Usuarios del sistema":
+                this.menuOrdenacionUsuarios();
+                break;
+            case "Estadisticas":
+                this.menuEstadisticas();
+                break;
+            case "Amigos":
+                this.menuAmigos();
+                break;
+            case "Grupos":
+                this.menuGrupos();
+                break;
+            case "Rutas":
+                this.menuRutas();
+                break;
+            case "Retos":
+                //this.retos();
+                break;
+            case "Salir":
+                //this.salir();
+                break;
+        }
+    });
+}
+
+menuGrupos() {
+    inquirer.prompt({
+        type: 'list',
+        name: 'menu',
+        message: 'Elige una opción',
+        choices: ["Ver grupos","Unirse a un grupo", "Crear un grupo", "Borrar un grupo(Debes ser el creador del mismo)", "Volver"]
+    }).then((respuesta) => {
+        switch (respuesta.menu) {
+            case "Ver grupos":
+               this.menuOrdenacionGrupos();
+                break;
+            case "Eliminar amigo":
+                
+                break;
+            case "Ver amigos":
+                
+                break
+            case "Volver":
+                this.menuUsuario();
+                break;
+        }
+    });
 
 }
 
+menuEstadisticas() {
+    inquirer.prompt({
+        type: 'list',
+        name: 'menu',
+        message: 'Elige una opción',
+        choices: ["Semana", "Mes", "Año", "Volver"]
+    }).then((respuesta) => {
+        switch (respuesta.menu) {
+            case "Semana":
+                console.log(this.coleccionUsuarios.getEstadisticasEntrenamiento(this.coleccionRutas, this.usuarioActual, "semana"));
+                setTimeout(() => {
+                    this.menuEstadisticas();
+                }, 2000);
+                break;
+            case "Mes":
+                console.log(this.coleccionUsuarios.getEstadisticasEntrenamiento(this.coleccionRutas, this.usuarioActual, "mes"));
+                setTimeout(() => {
+                    this.menuEstadisticas();
+                }, 2000);
+                break;
+            case "Año":    
+            console.log(this.coleccionUsuarios.getEstadisticasEntrenamiento(this.coleccionRutas, this.usuarioActual, "año"));
+            setTimeout(() => {
+                this.menuEstadisticas();
+            }, 2000);    
+            break;
+            case "Volver":
+                this.menuUsuario();
+                break;
+        }
+    });
+}
+
+menuAmigos() {
+    inquirer.prompt({
+        type: 'list',
+        name: 'menu',
+        message: 'Elige una opción',
+        choices: ["Ver amigos","Añadir amigo", "Eliminar amigo", "Volver"]
+    }).then((respuesta) => {
+        switch (respuesta.menu) {
+            case "Añadir amigo":
+                inquirer.prompt({
+                    type: 'input',
+                    name: 'id',
+                    message: 'Introduce el id del usuario que quieres añadir'
+                }).then((respuesta) => {
+                    console.log(this.coleccionUsuarios.addAmigo(this.usuarioActual, respuesta.id));
+                    setTimeout(() => {
+                        this.menuAmigos();
+                    }, 2000);
+                });
+                break;
+            case "Eliminar amigo":
+                inquirer.prompt({
+                    type: 'input',
+                    name: 'id',
+                    message: 'Introduce el id del usuario que quieres eliminar'
+                }).then((respuesta) => {
+                    console.log(this.coleccionUsuarios.removeAmigo(this.usuarioActual, respuesta.id));
+                    setTimeout(() => {
+                        this.menuAmigos();
+                    }, 2000);
+                });
+                break;
+            case "Ver amigos":
+                console.log(this.coleccionUsuarios.getAmigos(this.usuarioActual));
+                setTimeout(() => {
+                    this.menuAmigos();
+                }, 2000);
+                break
+            case "Volver":
+                this.menuUsuario();
+                break;
+        }
+    });
+}
+
+public menuRutas() {
+    inquirer.prompt({
+        type: 'list',
+        name: 'menu',
+        message: 'Elige una opción',
+        choices: ["Ver rutas", "Añadir ruta realizada", "Volver"]
+    }).then((respuesta) => {
+        switch (respuesta.menu) {
+            case "Ver rutas":
+                this.menuInfoRutas();
+                break;
+            case "Añadir ruta realizada":
+                inquirer.prompt({
+                    type: 'input',
+                    name: 'id',
+                    message: 'Introduce el id de la ruta que has realizado'
+                }).then((respuesta) => {
+                    //console.log(this.coleccionRutas.addRutaRealizada(this.usuarioActual, respuesta.id));
+                    setTimeout(() => {
+                        this.menuRutas();
+                    }, 2000);
+                });
+                break;
+            case "Volver":
+                this.menuUsuario();
+                break;
+        }
+    }
+    );
+    
+}
+
+public menuInfoRutas() {
+    let rutas: {id: string}[] = [];
+    this.coleccionRutas.getColeccionRutas().forEach(ruta => {
+        rutas.push({id: ruta.getId()});
+    });
+    let rutasid: string[] = this.coleccionRutas.getColeccionRutas().map(ruta => ruta.getId());
+    rutasid.push("Volver");
+    inquirer.prompt({
+        type: 'list',
+        name: 'menu',
+        message: 'Elige una opción',
+        choices: rutasid
+    }).then((respuesta) => {
+        switch (respuesta.menu) {
+            case "Volver":
+                this.menuRutas();
+                break;
+                
+             default:
+            
+            this.coleccionRutas.getInfoRuta(respuesta.menu, this.coleccionUsuarios)
+            setTimeout(() => {
+                this.menuInfoRutas();
+            }, 2000);
+            break;
+        }
+    });
+}
+
+public menuOrdenacionUsuarios() {
+    inquirer.prompt({
+        type: 'list',
+        name: 'menu',
+        message: 'Elige una opción',
+        choices: ["Alfabéticamente por nombre del usuario", "Por cantidad de KM realizados", "Volver"]
+    }).then((respuesta) => {
+        switch (respuesta.menu) {
+            case "Alfabéticamente por nombre del usuario":
+                this.menuAlfabeticoUsuarios();
+                break;
+            case "Por cantidad de KM realizados":
+                //menu usuarios ordenados por km
+                break;
+            case "Volver":
+                this.menuUsuario();
+                break;
+        }
+    });
+}
+
+menuAlfabeticoUsuarios() {
+    inquirer.prompt({
+        type: 'list',
+        name: 'menu',
+        message: 'Elige una opción',
+        choices: ["A-Z", "Z-A", "Volver"]
+    }).then((respuesta) => {
+        switch (respuesta.menu) {
+            case "A-Z":
+                console.log(this.coleccionUsuarios.ordenarUsuariosPorNombre("ascendente").forEach(usuario => console.log(usuario.getId() + " " +usuario.getNombre())));
+                setTimeout(() => {
+                    this.menuAlfabeticoUsuarios();
+                }, 2000);
+                break;
+            case "Z-A":
+                console.log(this.coleccionUsuarios.ordenarUsuariosPorNombre("descendente").forEach(usuario => console.log(usuario.getId() + " " +usuario.getNombre())));
+                setTimeout(() => {
+                    this.menuAlfabeticoUsuarios();
+                }, 2000);
+                break;
+            case "Volver":
+                this.menuOrdenacionUsuarios();
+                break;
+        }
+    });
+}
+
+public menuOrdenacionGrupos() {
+    inquirer.prompt({
+        type: 'list',
+        name: 'menu',
+        message: 'Elige una opción',
+        choices: ["Alfabéticamente por nombre del grupo", "Por cantidad de KM realizados conjuntamente", "Cantidad de participantes",  "Volver"]
+    }).then((respuesta) => {
+        switch (respuesta.menu) {
+            case "Alfabéticamente por nombre del grupo":
+                this.menuAlfabeticoGrupos();
+                break;
+            case "Por cantidad de KM realizados conjuntamente":
+                //menu grupos ordenados por km
+                break;
+            case "Cantidad de participantes":
+                this.menuParticipantesGrupos();
+                break;
+            case "Volver":
+                this.menuUsuario();
+                break;
+        }
+    });
+}
+
+menuParticipantesGrupos() {
+    inquirer.prompt({
+        type: 'list',
+        name: 'menu',
+        message: 'Elige una opción',
+        choices: ["Más participantes", "Menos participantes", "Volver"]
+    }).then((respuesta) => {
+        switch (respuesta.menu) {
+            case "Más participantes":
+                console.log(this.coleccionGrupos.ordenarGruposPorParticipantes("ascendente").forEach(grupo => console.log(grupo.getId() + " " +grupo.getNombre())));
+                setTimeout(() => {
+                    this.menuParticipantesGrupos();
+                }, 2000);
+                break;
+            case "Menos participantes":
+                console.log(this.coleccionGrupos.ordenarGruposPorParticipantes("descendente").forEach(grupo => console.log(grupo.getId() + " " +grupo.getNombre())));
+                setTimeout(() => {
+                    this.menuParticipantesGrupos();
+                }, 2000);
+                break;
+            case "Volver":
+                this.menuOrdenacionGrupos();
+                break;
+        }
+    });
+}
+menuAlfabeticoGrupos() {
+    inquirer.prompt({
+        type: 'list',
+        name: 'menu',
+        message: 'Elige una opción',
+        choices: ["A-Z", "Z-A", "Volver"]
+    }).then((respuesta) => {
+        switch (respuesta.menu) {
+            case "A-Z":
+                console.log(this.coleccionGrupos.ordenarGruposPorNombre("ascendente").forEach(grupo => console.log(grupo.getId() + " " +grupo.getNombre())));
+                setTimeout(() => {
+                    this.menuAlfabeticoGrupos();
+                }, 2000);
+                break;
+            case "Z-A":
+                console.log(this.coleccionGrupos.ordenarGruposPorNombre("descendente").forEach(grupo => console.log(grupo.getId() + " " +grupo.getNombre())));
+                setTimeout(() => {
+                    this.menuAlfabeticoGrupos();
+                }, 2000);
+                break;
+            case "Volver":
+                this.menuOrdenacionGrupos();
+                break;
+        }
+    });
+}
+
+public createUser(id: string, nombre:string, actividades: "Bicicleta" | "Correr") {
+  const nuevousuario = new usuario(id, nombre, actividades, [], []);
+  this.coleccionUsuarios.addUsuario(nuevousuario);
+  }
+
+  
+}
             

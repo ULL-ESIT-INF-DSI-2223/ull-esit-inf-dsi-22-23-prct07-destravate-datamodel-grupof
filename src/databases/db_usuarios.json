@@ -5,10 +5,8 @@
       "nombre": "Paco",
       "actividades": "Correr",
       "amigos": [
-        "USU2"
-      ],
-      "grupoAmigos": [
-        "GR1"
+        "USU2",
+        "USU5"
       ],
       "historicoRutas": [
         {
@@ -54,14 +52,25 @@
       ]
     },
     {
-      "id": "USU3",
+      "id": "USU2",
       "nombre": "Juan",
       "actividades": "Correr",
       "amigos": [
         "USU4"
       ],
-      "grupoAmigos": [
-        "GR2"
+      "historicoRutas": [
+        {
+          "fecha": "2022-05-12",
+          "ruta": "R3"
+        }
+      ]
+    },
+    {
+      "id": "USU3",
+      "nombre": "Juan",
+      "actividades": "Correr",
+      "amigos": [
+        "USU4"
       ],
       "historicoRutas": [
         {
@@ -77,9 +86,6 @@
       "amigos": [
         "USU3"
       ],
-      "grupoAmigos": [
-        "GR2"
-      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -93,9 +99,6 @@
       "actividades": "Correr",
       "amigos": [
         "USU6"
-      ],
-      "grupoAmigos": [
-        "GR3"
       ],
       "historicoRutas": [
         {
@@ -111,9 +114,6 @@
       "amigos": [
         "USU5"
       ],
-      "grupoAmigos": [
-        "GR3"
-      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -127,9 +127,6 @@
       "actividades": "Correr",
       "amigos": [
         "USU5"
-      ],
-      "grupoAmigos": [
-        "GR3"
       ],
       "historicoRutas": [
         {
@@ -145,9 +142,6 @@
       "amigos": [
         "USU3"
       ],
-      "grupoAmigos": [
-        "GR1"
-      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -161,9 +155,6 @@
       "actividades": "Correr",
       "amigos": [
         "USU2"
-      ],
-      "grupoAmigos": [
-        "GR1"
       ],
       "historicoRutas": [
         {
@@ -179,9 +170,6 @@
       "amigos": [
         "USU1"
       ],
-      "grupoAmigos": [
-        "GR1"
-      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -195,9 +183,6 @@
       "actividades": "Correr",
       "amigos": [
         "USU4"
-      ],
-      "grupoAmigos": [
-        "GR2"
       ],
       "historicoRutas": [
         {
@@ -213,9 +198,6 @@
       "amigos": [
         "USU3"
       ],
-      "grupoAmigos": [
-        "GR2"
-      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -230,9 +212,6 @@
       "amigos": [
         "USU6"
       ],
-      "grupoAmigos": [
-        "GR2"
-      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -244,9 +223,6 @@
       "id": "USU14",
       "nombre": "Ana",
       "actividades": "Bicicleta",
-      "grupoAmigos": [
-        "GR3"
-      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -258,9 +234,6 @@
       "id": "USU15",
       "nombre": "Amancio",
       "actividades": "Correr",
-      "grupoAmigos": [
-        "GR1"
-      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -272,9 +245,50 @@
       "id": "USU16",
       "nombre": "Lola",
       "actividades": "Correr",
-      "grupoAmigos": [
-        "GR3"
-      ],
+      "historicoRutas": [
+        {
+          "fecha": "2022-05-12",
+          "ruta": "R8"
+        }
+      ]
+    },
+    {
+      "id": "USU17",
+      "nombre": "Lola",
+      "actividades": "Correr",
+      "historicoRutas": [
+        {
+          "fecha": "2022-05-12",
+          "ruta": "R8"
+        }
+      ]
+    },
+    {
+      "id": "USU18",
+      "nombre": "Lola",
+      "actividades": "Correr",
+      "historicoRutas": [
+        {
+          "fecha": "2022-05-12",
+          "ruta": "R8"
+        }
+      ]
+    },
+    {
+      "id": "USU19",
+      "nombre": "Lola",
+      "actividades": "Correr",
+      "historicoRutas": [
+        {
+          "fecha": "2022-05-12",
+          "ruta": "R8"
+        }
+      ]
+    },
+    {
+      "id": "USU20",
+      "nombre": "Pedro",
+      "actividades": "Correr",
       "historicoRutas": [
         {
           "fecha": "2022-05-12",

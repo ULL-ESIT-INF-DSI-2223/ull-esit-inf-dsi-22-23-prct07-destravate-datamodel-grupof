@@ -5,18 +5,16 @@ export class ruta {
     private coordenadasFinal: string
     private longitudRuta: number
     private desnivelMedio: number
-    private usuariosFinalizados: string []
     private tipoActividad: 'Bicicleta' | 'Correr'
     private calificacionMedia: number
 
-    constructor(id: string, nombre: string, coordenadasInicio: string, coordenadasFinal: string, longitudRuta: number, desnivelMedio: number, usuariosFinalizados: string [], tipoActividad: 'Bicicleta' | 'Correr', calificacionMedia: number){
+    constructor(id: string, nombre: string, coordenadasInicio: string, coordenadasFinal: string, longitudRuta: number, desnivelMedio: number, tipoActividad: 'Bicicleta' | 'Correr', calificacionMedia: number){
         this.id = id;
         this.nombre = nombre;
         this.coordenadasInicio = coordenadasInicio;
         this.coordenadasFinal = coordenadasFinal;
         this.longitudRuta = longitudRuta;
         this.desnivelMedio = desnivelMedio;
-        this.usuariosFinalizados = usuariosFinalizados;
         this.tipoActividad = tipoActividad;
         this.calificacionMedia = calificacionMedia;
     }
@@ -69,14 +67,6 @@ export class ruta {
         return this.desnivelMedio
     }
 
-    setUsuariosFinalizados(usuariosFinalizados: string []){
-        this.usuariosFinalizados = usuariosFinalizados
-    }
-
-    getUsuariosFinalizados(): string [] {
-        return this.usuariosFinalizados
-    }
-
     setTipoActividad(tipoActividad: 'Bicicleta' | 'Correr'){
         this.tipoActividad = tipoActividad
     }
@@ -91,10 +81,6 @@ export class ruta {
 
     getCalificacionMedia(): number {
         return this.calificacionMedia
-    }
-
-    public addUsuarioFinalizado(usuario: string){
-        this.usuariosFinalizados.push(usuario)
     }
 
     

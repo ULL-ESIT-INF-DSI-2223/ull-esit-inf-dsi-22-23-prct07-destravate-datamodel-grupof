@@ -4,7 +4,6 @@ export type usuarioSchema = {
          nombre: string,
          actividades: "Bicicleta" | "Correr",
          amigos: string [], //usuarios con los que interacciona
-         grupoAmigos: string [], //Ids de usuarios con los que realiza rutas
          historicoRutas: {
             fecha: Date,
             ruta: string 

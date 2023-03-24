@@ -48,6 +48,72 @@
       "usuariosFinalizados": [],
       "tipoActividad": "Correr",
       "calificacionMedia": 4.5
+    },
+    {
+      "id": "R5",
+      "nombre": "Ruta de senderismo por el parque nacional",
+      "coordenadasInicio": "41.2013,-1.7342",
+      "coordenadasFinal": "41.1679,-1.7948",
+      "longitudRuta": 15,
+      "desnivelMedio": 300,
+      "usuariosFinalizados": [],
+      "tipoActividad": "Correr",
+      "calificacionMedia": 4.5
+    },
+    {
+      "id": "R6",
+      "nombre": "Ruta de senderismo por el parque nacional",
+      "coordenadasInicio": "41.2013,-1.7342",
+      "coordenadasFinal": "41.1679,-1.7948",
+      "longitudRuta": 15,
+      "desnivelMedio": 300,
+      "usuariosFinalizados": [],
+      "tipoActividad": "Correr",
+      "calificacionMedia": 4.5
+    },
+    {
+      "id": "R7",
+      "nombre": "Ruta de senderismo por el parque nacional",
+      "coordenadasInicio": "41.2013,-1.7342",
+      "coordenadasFinal": "41.1679,-1.7948",
+      "longitudRuta": 15,
+      "desnivelMedio": 300,
+      "usuariosFinalizados": [],
+      "tipoActividad": "Correr",
+      "calificacionMedia": 4.5
+    },
+    {
+      "id": "R8",
+      "nombre": "Ruta de senderismo por el parque nacional",
+      "coordenadasInicio": "41.2013,-1.7342",
+      "coordenadasFinal": "41.1679,-1.7948",
+      "longitudRuta": 15,
+      "desnivelMedio": 300,
+      "usuariosFinalizados": [],
+      "tipoActividad": "Correr",
+      "calificacionMedia": 4.5
+    },
+    {
+      "id": "R9",
+      "nombre": "Ruta de senderismo por el parque nacional",
+      "coordenadasInicio": "41.2013,-1.7342",
+      "coordenadasFinal": "41.1679,-1.7948",
+      "longitudRuta": 15,
+      "desnivelMedio": 300,
+      "usuariosFinalizados": [],
+      "tipoActividad": "Correr",
+      "calificacionMedia": 4.5
+    },
+    {
+      "id": "R10",
+      "nombre": "Ruta de senderismo por el parque nacional",
+      "coordenadasInicio": "41.2013,-1.7342",
+      "coordenadasFinal": "41.1679,-1.7948",
+      "longitudRuta": 15,
+      "desnivelMedio": 300,
+      "usuariosFinalizados": [],
+      "tipoActividad": "Correr",
+      "calificacionMedia": 4.5
     }
   ]
 }

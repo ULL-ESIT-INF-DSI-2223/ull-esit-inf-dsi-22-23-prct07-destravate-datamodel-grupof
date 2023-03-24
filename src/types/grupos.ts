@@ -4,18 +4,21 @@ export class grupo {
     nombre: string;
     participantes: string[];
     historicoRutas: { fecha: Date; ruta: string, usuarios: string [] }[];
+    creador: string;
     // Atributo de usuario creador
     constructor(
       id: string,
       nombre: string,
       participantes: string[],
       historicoRutas: { fecha: Date; ruta: string, usuarios: string [] }[],
+      creador: string
       
     ) {
       this.id = id;
       this.nombre = nombre;
       this.participantes = participantes;
       this.historicoRutas = historicoRutas;
+      this.creador = creador;
     }
 
     // Getters
@@ -34,6 +37,9 @@ export class grupo {
 
     getHistoricoRutas(): { fecha: Date; ruta: string, usuarios: string [] }[] {
         return this.historicoRutas;
+    }
+    getCreador(): string {
+      return this.creador;
     }
   }
 

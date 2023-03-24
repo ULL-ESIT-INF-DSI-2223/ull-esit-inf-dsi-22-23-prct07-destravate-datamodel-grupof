@@ -1,5 +1,6 @@
 import { ruta } from "../types/rutas";
 import { rutaSchema } from "../schemas/rutaSchema";
+import { usuarioCollection } from "./usuarioCollection";
 import lowdb from "lowdb";
 import FileSync from "lowdb/adapters/FileSync";
 
@@ -28,7 +29,6 @@ export class rutaCollection {
             item.coordenadasFinal,
             item.longitudRuta,
             item.desnivelMedio,
-            item.usuariosFinalizados,
             item.tipoActividad,
             item.calificacionMedia
           )
@@ -51,7 +51,6 @@ export class rutaCollection {
       coordenadasFinal: ruta.getCoordenadasFinal(),
       longitudRuta: ruta.getLongitudRuta(),
       desnivelMedio: ruta.getDesnivelMedio(),
-      usuariosFinalizados: ruta.getUsuariosFinalizados(),
       tipoActividad: ruta.getTipoActividad(),
       calificacionMedia: ruta.getCalificacionMedia(),
     };
@@ -70,25 +69,6 @@ export class rutaCollection {
     }
   }
 
-  public addUserToRuta(user_id: string, ruta_id: string) {
-    const rutaAEditar = this.coleccionRutas.find(
-      (ruta) => ruta.getId() === ruta_id
-    );
-    if (rutaAEditar) {
-      // comprobar que en la ruta no esté ya el usuario
-      if (rutaAEditar.getUsuariosFinalizados().includes(user_id)) {
-        console.log("El usuario ya está en la ruta");
-      } else {
-        rutaAEditar.addUsuarioFinalizado(user_id);
-        this.database
-          .get("ruta")
-          .find({ id: ruta_id })
-          .assign({ usuariosFinalizados: rutaAEditar.getUsuariosFinalizados() })
-          .write();
-      }
-    }
-  }
-
   //Alfabéticamente por nombre de la ruta, ascendente y descendente.
   public getRutasAlfabetico(orden: boolean) : ruta[] {
     if (orden) {
@@ -99,13 +79,13 @@ export class rutaCollection {
   }
 
   //Cantidad de usuarios que realizan las rutas, ascendente y descendente.
-  public getRutasCantidadUsuarios(orden: boolean) : ruta[] {
+  /*public getRutasCantidadUsuarios(orden: boolean) : ruta[] {
     if (orden) {
       return this.coleccionRutas.sort((a, b) => a.getUsuariosFinalizados().length - b.getUsuariosFinalizados().length);
     } else {
       return this.coleccionRutas.sort((a, b) => b.getUsuariosFinalizados().length - a.getUsuariosFinalizados().length);
     }
-  }
+  }*/
   // Por la calificación media de la ruta, ascendente y descendente.
 
   public getRutasCalificacionMedia(orden: boolean) : ruta[] {
@@ -126,5 +106,53 @@ export class rutaCollection {
       return []
     }
   }
+
+  public getInfoRuta(id: string, coleccionUsuarios: usuarioCollection): void {
+    const ruta = this.coleccionRutas.find((ruta) => ruta.getId() === id);
+    if (ruta) {
+      console.log("Nombre: " + ruta.getNombre());
+      console.log("Coordenadas inicio: " + ruta.getCoordenadasInicio());
+      console.log("Coordenadas final: " + ruta.getCoordenadasFinal());
+      console.log("Longitud de la ruta: " + ruta.getLongitudRuta());
+      console.log("Desnivel medio: " + ruta.getDesnivelMedio());
+      console.log("Usuarios finalizados: " + this.getUsuariosFinalizados(coleccionUsuarios, id));
+      console.log("Tipo de actividad: " + ruta.getTipoActividad());
+      console.log("Calificación media: " + ruta.getCalificacionMedia());
+    } else {
+      console.log("No existe la ruta");
+    }
+  }
+
+  public addRutaRealizada(id: string, user_id: string) {
+    const ruta = this.coleccionRutas.find((ruta) => ruta.getId() === id);
+    const user = this.coleccionRutas.find((user) => user.getId() === user_id);
+
+    if (!ruta) {
+      console.log("No existe la ruta");
+    }
+
+    if (!user) {
+      console.log("No existe el usuario");
+    }
+
+    return "Ruta añadida"
+}
+
+public getUsuariosFinalizados(coleccionUsuarios: usuarioCollection, id: string): string[] {
+  let usuariosFinalizados = new Set<string>();
+  const usuarios = coleccionUsuarios.getColeccionUsuarios();
+
+  if (!ruta) {
+    console.log("No existe la ruta");
+  }
+
+  usuarios.forEach((usuario) => {
+    if (usuario.getHistoricoRutas().find((ruta) => ruta.ruta === id)) {
+      usuariosFinalizados.add(usuario.getId());
+    }
+  });
+
+  return Array.from(usuariosFinalizados);
+}
 
 }

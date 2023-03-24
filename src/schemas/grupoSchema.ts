@@ -7,6 +7,7 @@ export type grupoSchema = {
             fecha: Date,
             ruta: string,
             usuarios: string[]
-        }[]
+        }[],
+        creador: string
     } []
 }

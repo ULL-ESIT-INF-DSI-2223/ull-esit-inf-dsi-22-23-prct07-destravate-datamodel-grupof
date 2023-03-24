@@ -3,17 +3,13 @@ export class usuario{
     private nombre: string
     private actividades: "Bicicleta" | "Correr"
     private amigos: string [] //usuarios con los que interacciona
-    private grupoAmigos: string [] //Ids de usuarios con los que realiza rutas
-    //private rutasFavoritas: string []
-    //private retosActivos: string []
     private historicoRutas: {fecha: Date; ruta: string } []; //ID de la ruta y fecha
 
-    constructor(id: string, nombre: string, actividades: "Bicicleta" | "Correr", amigos: string [], grupoAmigos: string [], historicoRutas: { fecha: Date; ruta: string }[]) {
+    constructor(id: string, nombre: string, actividades: "Bicicleta" | "Correr", amigos: string [], historicoRutas: { fecha: Date; ruta: string }[]) {
             this.id = id
             this.nombre = nombre
             this.actividades = actividades
             this.amigos = amigos
-            this.grupoAmigos = grupoAmigos
             this.historicoRutas = historicoRutas
          }
     
@@ -30,10 +26,6 @@ export class usuario{
 
     public getAmigos(): string [] {
         return this.amigos;
-    }
-
-    public getGrupoAmigos(): string [] {
-        return this.grupoAmigos;
     }
     public getHistoricoRutas(): { fecha: Date; ruta: string }[] {
         return this.historicoRutas

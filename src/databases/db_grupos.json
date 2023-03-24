@@ -23,7 +23,8 @@
             "USU1"
           ]
         }
-      ]
+      ],
+      "creador": "System"
     },
     {
       "id": "G2",
@@ -65,13 +66,30 @@
             "USU1"
           ]
         }
-      ]
+      ],
+      "creador": "System"
     },
     {
       "id": "G3",
       "nombre": "Grupo de caminatas de la muerte",
       "participantes": [],
-      "historicoRutas": []
+      "historicoRutas": [],
+      "creador": "System"
+    },
+    {
+      "id": "G4",
+      "nombre": "Grupo Tenerife",
+      "participantes": [],
+      "historicoRutas": [],
+      "creador": "System"
+    },
+    {
+      "id": "G5",
+      "nombre": "Grupo agrocaminatas",
+      "participantes": [],
+      "historicoRutas": [],
+      "creador": "System"
     }
+    
   ]
 }

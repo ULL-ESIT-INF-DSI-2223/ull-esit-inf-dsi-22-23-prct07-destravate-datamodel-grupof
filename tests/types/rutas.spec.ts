@@ -2,7 +2,7 @@ import { ruta } from '../../src/types/rutas';
 import 'mocha';
 import { expect } from 'chai'
 
-const ruta1: ruta = new ruta(  '', '', '', '', 0, 0, [], 'Correr', 0);
+const ruta1: ruta = new ruta(  '', '', '', '', 0, 0, 'Correr', 0);
 
 
 
@@ -31,10 +31,6 @@ describe('Comprobar clase Ruta', () => {
         ruta1.setDesnivelMedio(4);
         expect(ruta1.getDesnivelMedio()).to.be.equal(4);
     });
-    it('Metodos: setUsuariosFinalizados(usuariosFinalizados: string []), getUsuariosFinalizados(): string []', () => {
-        ruta1.setUsuariosFinalizados(['USU1', 'USU2']);
-        expect(ruta1.getUsuariosFinalizados()).to.be.eql(['USU1', 'USU2']);
-    });
     it('Metodos: setTipoActividad(tipoActividad: "Bicicleta" | "Correr"), getTipoActividad(): "Bicicleta" | "Correr"', () => {
         ruta1.setTipoActividad('Bicicleta');
         expect(ruta1.getTipoActividad()).to.be.equal('Bicicleta');
@@ -43,11 +39,6 @@ describe('Comprobar clase Ruta', () => {
         ruta1.setCalificacionMedia(3);
         expect(ruta1.getCalificacionMedia()).to.be.equal(3);
     });
-    it('Metodos: addUsuarioFinalizado(usuario: string)', () => {
-        ruta1.addUsuarioFinalizado('USU3');
-        expect(ruta1.getUsuariosFinalizados()).to.be.eql(['USU1', 'USU2', 'USU3']);
-    });
-
 });
 
 
