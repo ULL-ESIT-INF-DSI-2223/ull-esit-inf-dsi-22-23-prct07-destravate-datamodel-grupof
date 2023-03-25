@@ -9,7 +9,7 @@
       ],
       "historicoRutas": [
         {
-          "fecha": "2022-05-12T18:25:43.511Z",
+          "fecha": "2023-03-20T18:25:43.511Z",
           "ruta": "R2",
           "usuarios": [
             "USU1",
@@ -17,7 +17,7 @@
           ]
         },
         {
-          "fecha": "2023-03-12T18:25:43.511Z",
+          "fecha": "2023-03-21T18:25:43.511Z",
           "ruta": "R2",
           "usuarios": [
             "USU1"
@@ -29,7 +29,9 @@
     {
       "id": "G2",
       "nombre": "Grupo de amigos ciclistas",
-      "participantes": [],
+      "participantes": [
+        "USU1"
+      ],
       "historicoRutas": [
         {
           "fecha": "2023-03-12T18:25:43.511Z",
@@ -86,10 +88,11 @@
     {
       "id": "G5",
       "nombre": "Grupo agrocaminatas",
-      "participantes": [],
+      "participantes": [
+        "USU1"
+      ],
       "historicoRutas": [],
       "creador": "System"
     }
-    
   ]
 }

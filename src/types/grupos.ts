@@ -35,6 +35,10 @@ export class grupo {
         return this.participantes;
     }
 
+    addParticipante(idParticipante: string) {
+        this.participantes.push(idParticipante);
+    }
+
     getHistoricoRutas(): { fecha: Date; ruta: string, usuarios: string [] }[] {
         return this.historicoRutas;
     }

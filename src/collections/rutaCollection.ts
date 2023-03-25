@@ -70,11 +70,15 @@ export class rutaCollection {
   }
 
   //Alfabéticamente por nombre de la ruta, ascendente y descendente.
-  public getRutasAlfabetico(orden: boolean) : ruta[] {
+  public getRutasAlfabetico(orden: boolean): ruta[] {
     if (orden) {
-      return this.coleccionRutas.sort((a, b) => a.getNombre().localeCompare(b.getNombre()));
+      return this.coleccionRutas.sort((a, b) =>
+        a.getNombre().localeCompare(b.getNombre())
+      );
     } else {
-      return this.coleccionRutas.sort((a, b) => b.getNombre().localeCompare(a.getNombre()));
+      return this.coleccionRutas.sort((a, b) =>
+        b.getNombre().localeCompare(a.getNombre())
+      );
     }
   }
 
@@ -88,22 +92,28 @@ export class rutaCollection {
   }*/
   // Por la calificación media de la ruta, ascendente y descendente.
 
-  public getRutasCalificacionMedia(orden: boolean) : ruta[] {
+  public getRutasCalificacionMedia(orden: boolean): ruta[] {
     if (orden) {
-      return this.coleccionRutas.sort((a, b) => a.getCalificacionMedia() - b.getCalificacionMedia());
+      return this.coleccionRutas.sort(
+        (a, b) => a.getCalificacionMedia() - b.getCalificacionMedia()
+      );
     } else {
-      return this.coleccionRutas.sort((a, b) => b.getCalificacionMedia() - a.getCalificacionMedia());
+      return this.coleccionRutas.sort(
+        (a, b) => b.getCalificacionMedia() - a.getCalificacionMedia()
+      );
     }
   }
 
   //Ordenar por actividad: correr o ciclismo.
 
-  public getRutasActividad(actividad: string) : ruta[] {
+  public getRutasActividad(actividad: string): ruta[] {
     // comprobamos que la actividad es ciclismo o correr
     if (actividad === "Bicicleta" || actividad === "Correr") {
-    return this.coleccionRutas.filter((ruta) => ruta.getTipoActividad() === actividad);
+      return this.coleccionRutas.filter(
+        (ruta) => ruta.getTipoActividad() === actividad
+      );
     } else {
-      return []
+      return [];
     }
   }
 
@@ -115,7 +125,10 @@ export class rutaCollection {
       console.log("Coordenadas final: " + ruta.getCoordenadasFinal());
       console.log("Longitud de la ruta: " + ruta.getLongitudRuta());
       console.log("Desnivel medio: " + ruta.getDesnivelMedio());
-      console.log("Usuarios finalizados: " + this.getUsuariosFinalizados(coleccionUsuarios, id));
+      console.log(
+        "Usuarios finalizados: " +
+          this.getUsuariosFinalizados(coleccionUsuarios, id)
+      );
       console.log("Tipo de actividad: " + ruta.getTipoActividad());
       console.log("Calificación media: " + ruta.getCalificacionMedia());
     } else {
@@ -135,24 +148,26 @@ export class rutaCollection {
       console.log("No existe el usuario");
     }
 
-    return "Ruta añadida"
-}
-
-public getUsuariosFinalizados(coleccionUsuarios: usuarioCollection, id: string): string[] {
-  let usuariosFinalizados = new Set<string>();
-  const usuarios = coleccionUsuarios.getColeccionUsuarios();
-
-  if (!ruta) {
-    console.log("No existe la ruta");
+    return "Ruta añadida";
   }
 
-  usuarios.forEach((usuario) => {
-    if (usuario.getHistoricoRutas().find((ruta) => ruta.ruta === id)) {
-      usuariosFinalizados.add(usuario.getId());
+  public getUsuariosFinalizados(
+    coleccionUsuarios: usuarioCollection,
+    id: string
+  ): string[] {
+    const usuariosFinalizados = new Set<string>();
+    const usuarios = coleccionUsuarios.getColeccionUsuarios();
+
+    if (!ruta) {
+      console.log("No existe la ruta");
     }
-  });
 
-  return Array.from(usuariosFinalizados);
-}
+    usuarios.forEach((usuario) => {
+      if (usuario.getHistoricoRutas().find((ruta) => ruta.ruta === id)) {
+        usuariosFinalizados.add(usuario.getId());
+      }
+    });
 
+    return Array.from(usuariosFinalizados);
+  }
 }
