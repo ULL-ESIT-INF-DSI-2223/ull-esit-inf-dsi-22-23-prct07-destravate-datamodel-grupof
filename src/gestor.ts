@@ -449,7 +449,7 @@ Por la cantidad de usuarios que lo están realizando, ascendente y descendente
                 message: "Introduce el id de la ruta que has realizado",
               })
               .then((respuesta) => {
-                console.log(this.coleccionRutas.addRutaRealizada(this.coleccionUsuarios, this.usuarioActual, respuesta.id));
+                this.coleccionRutas.addRutaRealizada(this.coleccionUsuarios,respuesta.id, this.usuarioActual)
                 setTimeout(() => {
                   this.menuRutas();
                 }, 2000);

@@ -163,9 +163,19 @@ export class rutaCollection {
   public addRutaRealizada(coleccionUsuarios: usuarioCollection,id: string, user_id: string) {
     // buscar el usuario con ese ID.
     const usuario = coleccionUsuarios.getColeccionUsuarios().find(usuario => usuario.getId() === user_id);
-    usuario?.addHistoricoRutas(new Date(Date.now()), id);
-    // actualizar la base de datos de usuario
-    this.databaseUsuarios.get("usuario").find({id: user_id}).assign({historicoRutas: usuario?.getHistoricoRutas()}).write();
+    if (usuario) {
+      // comprobar que la ruta existe
+      const ruta = this.coleccionRutas.find(ruta => ruta.getId() === id);
+      if (ruta) {
+        usuario.addHistoricoRutas(new Date(Date.now()), id);
+        // añadir a la base da datos
+        this.databaseUsuarios.get("usuario").find({ id: user_id }).get("historicoRutas").push({ fecha: new Date(Date.now()), ruta: id }).write();
+      } else {
+        console.log("No existe la ruta");
+      } } else {
+      console.log("No existe el usuario");
+
+    }
 
   }
 
