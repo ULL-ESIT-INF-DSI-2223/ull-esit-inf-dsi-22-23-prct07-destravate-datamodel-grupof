@@ -1,6 +1,7 @@
 import { ruta } from "../types/rutas";
 import { rutaSchema } from "../schemas/rutaSchema";
 import { usuarioCollection } from "./usuarioCollection";
+import { usuarioSchema } from "../schemas/usuarioSchema";
 import lowdb from "lowdb";
 import FileSync from "lowdb/adapters/FileSync";
 
@@ -15,9 +16,11 @@ Ordenar por actividad: correr o ciclismo.
 export class rutaCollection {
   private coleccionRutas: ruta[];
   private database: lowdb.LowdbSync<rutaSchema>;
+  private databaseUsuarios: lowdb.LowdbSync<usuarioSchema>;
 
   constructor(public coleccion: ruta[]) {
     this.database = lowdb(new FileSync("src/databases/db_rutas.json"));
+    this.databaseUsuarios = lowdb(new FileSync("src/databases/db_usuarios.json"));
     if (this.database.has("ruta").value()) {
       const dbItems = this.database.get("ruta").value();
       dbItems.forEach((item) =>
@@ -83,15 +86,36 @@ export class rutaCollection {
   }
 
   //Cantidad de usuarios que realizan las rutas, ascendente y descendente.
-  /*public getRutasCantidadUsuarios(orden: boolean) : ruta[] {
+  public getRutasPorCantidadUsuarios(coleccionUsuarios: usuarioCollection, orden: boolean): ruta[] {
     if (orden) {
-      return this.coleccionRutas.sort((a, b) => a.getUsuariosFinalizados().length - b.getUsuariosFinalizados().length);
+      return this.coleccionRutas.sort(
+        (a, b) =>
+          this.getUsuariosFinalizados(coleccionUsuarios, a.getId()).length -
+          this.getUsuariosFinalizados(coleccionUsuarios, b.getId()).length
+      );
     } else {
-      return this.coleccionRutas.sort((a, b) => b.getUsuariosFinalizados().length - a.getUsuariosFinalizados().length);
+      return this.coleccionRutas.sort(
+        (a, b) =>
+          this.getUsuariosFinalizados(coleccionUsuarios, b.getId()).length
+          - this.getUsuariosFinalizados(coleccionUsuarios, a.getId()).length
+      );
     }
-  }*/
+  }
+
   // Por la calificación media de la ruta, ascendente y descendente.
 
+  public getRutasPorLongitud(orden: boolean): ruta[] {
+    if (orden) {
+      return this.coleccionRutas.sort(
+        (a, b) => a.getLongitudRuta() - b.getLongitudRuta()
+      );
+    } else {
+      return this.coleccionRutas.sort(
+        (a, b) => b.getLongitudRuta() - a.getLongitudRuta()
+      );
+    }
+
+  }
   public getRutasCalificacionMedia(orden: boolean): ruta[] {
     if (orden) {
       return this.coleccionRutas.sort(
@@ -136,19 +160,13 @@ export class rutaCollection {
     }
   }
 
-  public addRutaRealizada(id: string, user_id: string) {
-    const ruta = this.coleccionRutas.find((ruta) => ruta.getId() === id);
-    const user = this.coleccionRutas.find((user) => user.getId() === user_id);
+  public addRutaRealizada(coleccionUsuarios: usuarioCollection,id: string, user_id: string) {
+    // buscar el usuario con ese ID.
+    const usuario = coleccionUsuarios.getColeccionUsuarios().find(usuario => usuario.getId() === user_id);
+    usuario?.addHistoricoRutas(new Date(Date.now()), id);
+    // actualizar la base de datos de usuario
+    this.databaseUsuarios.get("usuario").find({id: user_id}).assign({historicoRutas: usuario?.getHistoricoRutas()}).write();
 
-    if (!ruta) {
-      console.log("No existe la ruta");
-    }
-
-    if (!user) {
-      console.log("No existe el usuario");
-    }
-
-    return "Ruta añadida";
   }
 
   public getUsuariosFinalizados(

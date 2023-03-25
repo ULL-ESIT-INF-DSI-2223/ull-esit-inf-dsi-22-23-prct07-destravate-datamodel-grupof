@@ -4,7 +4,10 @@
       "id": "USU1",
       "nombre": "Paco",
       "actividades": "Correr",
-      "amigos": ["USU2", "USU5"],
+      "amigos": [
+        "USU2",
+        "USU5"
+      ],
       "historicoRutas": [
         {
           "fecha": "2023-02-19T18:25:43.511Z",
@@ -52,7 +55,9 @@
       "id": "USU2",
       "nombre": "Juan",
       "actividades": "Correr",
-      "amigos": ["USU4"],
+      "amigos": [
+        "USU4"
+      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -64,7 +69,9 @@
       "id": "USU3",
       "nombre": "Juan",
       "actividades": "Correr",
-      "amigos": ["USU4"],
+      "amigos": [
+        "USU4"
+      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -76,7 +83,9 @@
       "id": "USU4",
       "nombre": "Pedro",
       "actividades": "Bicicleta",
-      "amigos": ["USU3"],
+      "amigos": [
+        "USU3"
+      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -88,7 +97,9 @@
       "id": "USU5",
       "nombre": "Maria",
       "actividades": "Correr",
-      "amigos": ["USU6"],
+      "amigos": [
+        "USU6"
+      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -100,7 +111,9 @@
       "id": "USU6",
       "nombre": "Ana",
       "actividades": "Bicicleta",
-      "amigos": ["USU5"],
+      "amigos": [
+        "USU5"
+      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -112,7 +125,9 @@
       "id": "USU7",
       "nombre": "Lola",
       "actividades": "Correr",
-      "amigos": ["USU5"],
+      "amigos": [
+        "USU5"
+      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -124,7 +139,9 @@
       "id": "USU8",
       "nombre": "Javi",
       "actividades": "Bicicleta",
-      "amigos": ["USU3"],
+      "amigos": [
+        "USU3"
+      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -136,7 +153,9 @@
       "id": "USU9",
       "nombre": "Paco",
       "actividades": "Correr",
-      "amigos": ["USU2"],
+      "amigos": [
+        "USU2"
+      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -148,7 +167,9 @@
       "id": "USU10",
       "nombre": "Rodri",
       "actividades": "Bicicleta",
-      "amigos": ["USU1"],
+      "amigos": [
+        "USU1"
+      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -160,7 +181,9 @@
       "id": "USU11",
       "nombre": "Juan",
       "actividades": "Correr",
-      "amigos": ["USU4"],
+      "amigos": [
+        "USU4"
+      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -172,7 +195,9 @@
       "id": "USU12",
       "nombre": "Pedro",
       "actividades": "Bicicleta",
-      "amigos": ["USU3"],
+      "amigos": [
+        "USU3"
+      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",
@@ -184,7 +209,9 @@
       "id": "USU13",
       "nombre": "Maria",
       "actividades": "Correr",
-      "amigos": ["USU6"],
+      "amigos": [
+        "USU6"
+      ],
       "historicoRutas": [
         {
           "fecha": "2022-05-12",

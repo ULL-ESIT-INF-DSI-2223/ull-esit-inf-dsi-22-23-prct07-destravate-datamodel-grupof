@@ -36,6 +36,10 @@ export class usuario {
   public getHistoricoRutas(): { fecha: Date; ruta: string }[] {
     return this.historicoRutas;
   }
+
+  public addHistoricoRutas(fecha: Date, ruta: string) {
+    this.historicoRutas.push({ fecha, ruta });
+  }
 }
 
 module.exports = {

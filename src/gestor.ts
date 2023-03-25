@@ -167,7 +167,7 @@ export class gestor {
             this.menuRutas();
             break;
           case "Retos":
-            //this.retos();
+            this.menuRetos();
             break;
           case "Salir":
             //    this.salir();
@@ -176,6 +176,93 @@ export class gestor {
       });
   }
 
+  /*
+  Ver mis retos
+    Ver todos los retos
+  Alfabéticamente por nombre del reto, ascendente y descendente.
+Por cantidad de KM que se deben realizar, ascendente y descendente.
+Por la cantidad de usuarios que lo están realizando, ascendente y descendente
+  */
+  menuRetos() {
+
+    inquirer
+      .prompt({
+        type: "list",
+        name: "menu",
+        message: "Elige una opción",
+        choices: [
+          "Ver mis retos",
+          "Ver todos los retos",
+          "Ver retos ordenados por nombre",
+          "Ver retos ordenados por distancia",
+          "Ver retos ordenados por cantidad de usuarios",
+          "Volver",
+        ],
+      })
+      .then((respuesta) => {
+        switch (respuesta.menu) {
+          case "Ver mis retos":
+            this.coleccionRetos.getRetosUsuario(this.coleccionUsuarios ,this.usuarioActual).forEach((reto) => {
+                console.log(reto.getId() + " " + reto.getNombre());
+                });
+            setTimeout(() => {
+              this.menuRetos();
+            }, 2000);
+            break;
+          case "Ver todos los retos":
+            this.menuInfoRetos();
+            break;
+          case "Ver retos ordenados por nombre":
+            //this.menuOrdenacionRetosNombre();
+            break;
+          case "Ver retos ordenados por distancia":
+            //this.menuOrdenacionRetosDistancia();
+            break;
+          case "Ver retos ordenados por cantidad de usuarios":
+            //this.menuOrdenacionRetosUsuarios();
+            break;
+          case "Volver":
+            this.menuUsuario();
+            break;
+        }
+      });
+
+  }
+
+  public menuInfoRetos() {
+    const retos: { id: string }[] = [];
+    this.coleccionRetos.getColeccionRetos().forEach((reto) => {
+      retos.push({ id: reto.getId() });
+    });
+    const retosid: string[] = this.coleccionRetos
+      .getColeccionRetos()
+      .map((reto) => reto.getId());
+    retosid.push("Volver");
+    inquirer
+      .prompt({
+        type: "list",
+        name: "menu",
+        message: "Elige una opción",
+        choices: retosid,
+      })
+      .then((respuesta) => {
+        switch (respuesta.menu) {
+          case "Volver":
+            this.menuRutas();
+            break;
+
+          default:
+            this.coleccionRetos.getInfoReto(
+              respuesta.menu,
+              this.coleccionUsuarios
+            );
+            setTimeout(() => {
+              this.menuInfoRetos();
+            }, 2000);
+            break;
+        }
+      });
+  }
   menuGrupos() {
     inquirer
       .prompt({
@@ -362,7 +449,7 @@ export class gestor {
                 message: "Introduce el id de la ruta que has realizado",
               })
               .then((respuesta) => {
-                //console.log(this.coleccionRutas.addRutaRealizada(this.usuarioActual, respuesta.id));
+                console.log(this.coleccionRutas.addRutaRealizada(this.coleccionUsuarios, this.usuarioActual, respuesta.id));
                 setTimeout(() => {
                   this.menuRutas();
                 }, 2000);
@@ -409,13 +496,7 @@ export class gestor {
         }
       });
   }
-  /*
-    Alfabéticamente por nombre de la ruta, ascendente y descendente.
-    Cantidad de usuarios que realizan las rutas, ascendente y descendente.
-    Por longitud de la ruta, ascendente y descendente.
-    Por la calificación media de la ruta, ascendente y descendente.
-    Ordenar por actividad: correr o ciclismo.
-    */
+  
   public menuOrdenacionRutas() {
     inquirer
       .prompt({
@@ -437,10 +518,10 @@ export class gestor {
             this.menuAlfabeticoRutas();
             break;
           case "Cantidad de usuarios que realizan las rutas":
-            //this.menuKmRutas();
+            this.menuCantidadUsuariosRutas();
             break;
           case "Por longitud de la ruta":
-            //this.menuLongitudRutas();
+            this.menuLongitudRutas();
             break;
           case "Por la calificación media de la ruta":
             this.menuCalificacionRutas();
@@ -453,6 +534,72 @@ export class gestor {
             break;
         }
       });
+  }
+
+  menuCantidadUsuariosRutas() {
+    inquirer.prompt({
+        type: "list",
+        name: "menu",
+        message: "Elige una opción",
+        choices: ["Ascendente", "Descendente", "Volver"],
+        })
+        .then((respuesta) => {
+            switch (respuesta.menu) {
+                case "Ascendente":
+                    this.coleccionRutas.getRutasPorCantidadUsuarios(this.coleccionUsuarios, true).forEach((ruta) => {
+                        console.log(ruta.getId() + " " + ruta.getNombre() + " " + this.coleccionRutas.getUsuariosFinalizados(this.coleccionUsuarios, ruta.getId()).length);
+                    });
+                    setTimeout(() => {
+                        this.menuCantidadUsuariosRutas();
+                    }, 2000);
+                    break;
+                case "Descendente":
+                    this.coleccionRutas.getRutasPorCantidadUsuarios(this.coleccionUsuarios, false).forEach((ruta) => {
+                        console.log(ruta.getId() + " " + ruta.getNombre() + " " + this.coleccionRutas.getUsuariosFinalizados(this.coleccionUsuarios, ruta.getId()).length);
+                    });
+                    setTimeout(() => {
+                        this.menuCantidadUsuariosRutas();
+                    }, 2000);
+                    break;
+                case "Volver":
+                    this.menuOrdenacionRutas();
+                    break;
+            }
+        });
+
+  }
+
+  menuLongitudRutas() {
+    inquirer.prompt({
+        type: "list",
+        name: "menu",
+        message: "Elige una opción",
+        choices: ["Ascendente", "Descendente", "Volver"],
+        })
+        .then((respuesta) => {
+            switch (respuesta.menu) {
+                case "Ascendente":
+                    this.coleccionRutas.getRutasPorLongitud(true).forEach((ruta) => {
+                        console.log(ruta.getId() + " " + ruta.getNombre() + " " + ruta.getLongitudRuta());
+                    });
+                    setTimeout(() => {
+                        this.menuLongitudRutas();
+                    }, 2000);
+                    break;
+                case "Descendente":
+                    this.coleccionRutas.getRutasPorLongitud(false).forEach((ruta) => {
+                        console.log(ruta.getId() + " " + ruta.getNombre() + " " + ruta.getLongitudRuta());
+                    });
+                    setTimeout(() => {
+                        this.menuLongitudRutas();
+                    }, 2000);
+                    break;
+                case "Volver":
+                    this.menuOrdenacionRutas();
+                    break;
+            }
+        });
+
   }
 
   menuActividadRutas() {
