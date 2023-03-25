@@ -213,13 +213,13 @@ Por la cantidad de usuarios que lo están realizando, ascendente y descendente
             this.menuInfoRetos();
             break;
           case "Ver retos ordenados por nombre":
-            //this.menuOrdenacionRetosNombre();
+            this.menuOrdenacionRetosNombre();
             break;
           case "Ver retos ordenados por distancia":
-            //this.menuOrdenacionRetosDistancia();
+            this.menuOrdenacionRetosDistancia();
             break;
           case "Ver retos ordenados por cantidad de usuarios":
-            //this.menuOrdenacionRetosUsuarios();
+            this.menuOrdenacionRetosCantidadUsuarios();
             break;
           case "Volver":
             this.menuUsuario();
@@ -229,6 +229,115 @@ Por la cantidad de usuarios que lo están realizando, ascendente y descendente
 
   }
 
+  menuOrdenacionRetosCantidadUsuarios() {
+    inquirer.prompt({
+        type: "list",
+        name: "menu",
+        message: "Elige una opción",
+        choices: [
+            "Ver retos ordenados por cantidad de usuarios ascendente",
+            "Ver retos ordenados por cantidad de usuarios descendente",
+            "Volver",
+        ],
+    }).then((respuesta) => {
+        switch (respuesta.menu) {
+            case "Ver retos ordenados por cantidad de usuarios ascendente":
+                this.coleccionRetos.getRetosOrdenadosCantidadUsuarios("ascendente").forEach((reto) => {
+                    console.log(reto.getId() + " " + reto.getNombre() + " " + reto.getUsuariosRealizandoReto().length);
+                });
+                setTimeout(() => {
+                    this.menuOrdenacionRetosCantidadUsuarios();
+                }, 2000);
+                break;
+            case "Ver retos ordenados por cantidad de usuarios descendente":
+                this.coleccionRetos.getRetosOrdenadosCantidadUsuarios("descendente").forEach((reto) => {
+                    console.log(reto.getId() + " " + reto.getNombre() + " " + reto.getUsuariosRealizandoReto().length);
+                });
+                setTimeout(() => {
+                    this.menuOrdenacionRetosCantidadUsuarios();
+                }, 2000);
+                break;
+            case "Volver":
+                this.menuRetos();
+                break;
+        }   
+    });
+}   
+
+
+  menuOrdenacionRetosDistancia() {
+    inquirer
+        .prompt({
+            type: "list",
+            name: "menu",
+            message: "Elige una opción",
+            choices: [
+                "Ver retos ordenados por distancia ascendente",
+                "Ver retos ordenados por distancia descendente",
+                "Volver",
+            ],
+        })
+        .then((respuesta) => {
+            switch (respuesta.menu) {
+                case "Ver retos ordenados por distancia ascendente":
+                    this.coleccionRetos.getRetosOrdenadosDistancia(this.coleccionRutas, "ascendente").forEach((reto) => {
+                        console.log(reto.getId() + " " + reto.getNombre());
+                    });
+                    setTimeout(() => {
+                        this.menuOrdenacionRetosDistancia();
+                    }, 2000);
+                    break;
+                case "Ver retos ordenados por distancia descendente":
+                    this.coleccionRetos.getRetosOrdenadosDistancia(this.coleccionRutas, "descendente").forEach((reto) => {
+                        console.log(reto.getId() + " " + reto.getNombre());
+                    });
+                    setTimeout(() => {
+                        this.menuOrdenacionRetosDistancia();
+                    }, 2000);
+                    break;
+                case "Volver":
+                    this.menuRetos();
+                    break;
+            }
+        });
+  }
+
+  menuOrdenacionRetosNombre() {
+    inquirer
+        .prompt({
+            type: "list",
+            name: "menu",
+            message: "Elige una opción",
+            choices: [
+                "Ver retos ordenados por nombre ascendente",
+                "Ver retos ordenados por nombre descendente",
+                "Volver",
+            ],
+        })
+        .then((respuesta) => {
+            switch (respuesta.menu) {
+                case "Ver retos ordenados por nombre ascendente":
+                    this.coleccionRetos.getRetosOrdenadosNombre("ascendente").forEach((reto) => {
+                        console.log(reto.getId() + " " + reto.getNombre());
+                    });
+                    setTimeout(() => {
+                        this.menuOrdenacionRetosNombre();
+                    }, 2000);
+                    break;
+                case "Ver retos ordenados por nombre descendente":
+                    this.coleccionRetos.getRetosOrdenadosNombre("descendente").forEach((reto) => {
+                        console.log(reto.getId() + " " + reto.getNombre());
+                    });
+                    setTimeout(() => {
+                        this.menuOrdenacionRetosNombre();
+                    }, 2000);
+                    break;
+                case "Volver":
+                    this.menuRetos();
+                    break;
+            }
+        });
+}
   public menuInfoRetos() {
     const retos: { id: string }[] = [];
     this.coleccionRetos.getColeccionRetos().forEach((reto) => {

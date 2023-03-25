@@ -3,6 +3,7 @@ import { retoSchema } from "../schemas/retoSchema";
 import lowdb from "lowdb";
 import FileSync from "lowdb/adapters/FileSync";
 import { usuarioCollection } from "./usuarioCollection";
+import { rutaCollection } from "./rutaCollection";
 
 export class retoCollection {
   private coleccionRetos: reto[];
@@ -86,4 +87,54 @@ export class retoCollection {
     }
   
   }
+
+  getRetosOrdenadosNombre(orden: "ascendente" | "descendente"): reto[] {
+    if (orden === "ascendente") {
+      return this.coleccionRetos.sort((a, b) =>
+        a.getNombre() > b.getNombre() ? 1 : -1
+      );
+    } else {
+      return this.coleccionRetos.sort((a, b) =>
+        a.getNombre() < b.getNombre() ? 1 : -1
+      );
+    }
+  }
+
+  getDistanciaTotalReto(coleccionRutas: rutaCollection, id: string): number {
+    let distanciaTotal = 0;
+    const reto = this.coleccionRetos.find((reto) => reto.getId() === id);
+    
+    if (reto) {
+      reto.getRutasReto().forEach((ruta) => {
+        if (ruta) {
+        const rutas = coleccionRutas.getColeccionRutas().find((ruta) => ruta.getId() === id);
+        //distanciaTotal += rutas?.getLongitudRuta();
+        }
+        
+      });
+    }
+    return distanciaTotal;
+
+  }
+  getRetosOrdenadosDistancia(coleccionRutas: rutaCollection ,orden: "ascendente" | "descendente"): reto[] {
+      console.log("Retos ordenados por distancia: ");
+      if (orden === "ascendente") {
+      return this.coleccionRetos.sort((a, b) => this.getDistanciaTotalReto(coleccionRutas, a.getId()) - 
+      this.getDistanciaTotalReto(coleccionRutas, b.getId()));
+    } else {
+      return this.coleccionRetos.sort((a, b) => this.getDistanciaTotalReto(coleccionRutas, b.getId()) - 
+      this.getDistanciaTotalReto(coleccionRutas, a.getId()));
+    }
+  }
+
+  getRetosOrdenadosCantidadUsuarios(orden: "ascendente" | "descendente"): reto[] {
+    if (orden === "ascendente") {
+      return this.coleccionRetos.sort((a, b) => a.getUsuariosRealizandoReto().length - 
+      b.getUsuariosRealizandoReto().length);
+    } else {
+      return this.coleccionRetos.sort((a, b) => b.getUsuariosRealizandoReto().length - 
+      a.getUsuariosRealizandoReto().length);
+    }
+  }
+  
 }

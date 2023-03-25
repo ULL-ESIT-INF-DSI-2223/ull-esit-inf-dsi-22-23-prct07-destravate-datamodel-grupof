@@ -160,6 +160,11 @@ export class rutaCollection {
     }
   }
 
+  getRutaById(id: string): ruta | undefined {
+    return this.coleccionRutas.find((ruta) => ruta.getId() === id);
+  }
+
+
   public addRutaRealizada(coleccionUsuarios: usuarioCollection,id: string, user_id: string) {
     // buscar el usuario con ese ID.
     const usuario = coleccionUsuarios.getColeccionUsuarios().find(usuario => usuario.getId() === user_id);
