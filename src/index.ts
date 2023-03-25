@@ -1,26 +1,17 @@
-import { usuarioCollection } from './collections/usuarioCollection'
-import { grupoCollection } from './collections/grupoCollection'
-import { rutaCollection } from './collections/rutaCollection'
-import { retoCollection } from './collections/retoCollection'
-import { gestor } from './gestor'
-
-
+import { usuarioCollection } from "./collections/usuarioCollection";
+import { grupoCollection } from "./collections/grupoCollection";
+import { rutaCollection } from "./collections/rutaCollection";
+import { retoCollection } from "./collections/retoCollection";
+import { gestor } from "./gestor";
 
 const gestion = new gestor();
 
 gestion.login();
 
-
-
-
-
-
 /*const usuarioCollectionPrueba = new usuarioCollection([])
 const grupoCollectionPrueba = new grupoCollection([])
 const rutaCollectionPrueba = new rutaCollection([])
 const retoCollectionPrueba = new retoCollection([])*/
-
-
 
 /*let visible = 5
 

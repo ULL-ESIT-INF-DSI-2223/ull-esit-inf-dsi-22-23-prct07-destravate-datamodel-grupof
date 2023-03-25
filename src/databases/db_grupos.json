@@ -3,25 +3,17 @@
     {
       "id": "G1",
       "nombre": "Grupo de aventureros",
-      "participantes": [
-        "USU1",
-        "USU2"
-      ],
+      "participantes": ["USU1", "USU2"],
       "historicoRutas": [
         {
           "fecha": "2023-03-20T18:25:43.511Z",
           "ruta": "R2",
-          "usuarios": [
-            "USU1",
-            "USU2"
-          ]
+          "usuarios": ["USU1", "USU2"]
         },
         {
           "fecha": "2023-03-21T18:25:43.511Z",
           "ruta": "R2",
-          "usuarios": [
-            "USU1"
-          ]
+          "usuarios": ["USU1"]
         }
       ],
       "creador": "System"
@@ -29,44 +21,32 @@
     {
       "id": "G2",
       "nombre": "Grupo de amigos ciclistas",
-      "participantes": [
-        "USU1"
-      ],
+      "participantes": ["USU1"],
       "historicoRutas": [
         {
           "fecha": "2023-03-12T18:25:43.511Z",
           "ruta": "R3",
-          "usuarios": [
-            "USU1"
-          ]
+          "usuarios": ["USU1"]
         },
         {
           "fecha": "2023-03-12T18:25:43.511Z",
           "ruta": "R3",
-          "usuarios": [
-            "USU1"
-          ]
+          "usuarios": ["USU1"]
         },
         {
           "fecha": "2023-03-12T18:25:43.511Z",
           "ruta": "R4",
-          "usuarios": [
-            "USU1"
-          ]
+          "usuarios": ["USU1"]
         },
         {
           "fecha": "2023-03-12T18:25:43.511Z",
           "ruta": "R4",
-          "usuarios": [
-            "USU1"
-          ]
+          "usuarios": ["USU1"]
         },
         {
           "fecha": "2023-03-12T18:25:43.511Z",
           "ruta": "R5",
-          "usuarios": [
-            "USU1"
-          ]
+          "usuarios": ["USU1"]
         }
       ],
       "creador": "System"
@@ -88,9 +68,7 @@
     {
       "id": "G5",
       "nombre": "Grupo agrocaminatas",
-      "participantes": [
-        "USU1"
-      ],
+      "participantes": ["USU1"],
       "historicoRutas": [],
       "creador": "System"
     }

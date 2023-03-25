@@ -1,11 +1,11 @@
-import { reto }  from '../types/retos'
+import { reto } from "../types/retos";
 
 export type retoSchema = {
-    reto : {
-         id: string,
-         nombre: string,
-         rutasReto: string [],
-         tipoActividad: 'Bicicleta' | 'Correr',
-         usuariosRealizandoReto: string []
-    } []
-}
+  reto: {
+    id: string;
+    nombre: string;
+    rutasReto: string[];
+    tipoActividad: "Bicicleta" | "Correr";
+    usuariosRealizandoReto: string[];
+  }[];
+};

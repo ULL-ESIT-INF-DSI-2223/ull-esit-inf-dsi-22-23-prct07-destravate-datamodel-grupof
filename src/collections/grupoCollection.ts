@@ -35,10 +35,14 @@ export class grupoCollection {
   public addParticipante(id: string, idParticipante: string) {
     const grupo = this.coleccionGrupos.find((grupo) => grupo.getId() === id);
     if (grupo) {
-        grupo.addParticipante(idParticipante);
-        this.database.get("grupo").find({ id: id }).assign({ participantes: grupo.getParticipantes() }).write();
+      grupo.addParticipante(idParticipante);
+      this.database
+        .get("grupo")
+        .find({ id: id })
+        .assign({ participantes: grupo.getParticipantes() })
+        .write();
     }
-    }
+  }
 
   public addGrupo(grupo: grupo) {
     this.coleccionGrupos.push(grupo);
@@ -66,10 +70,12 @@ export class grupoCollection {
 
   public getGruposUsuario(id: string): void {
     const misGrupos = this.coleccionGrupos.filter((grupo) =>
-        grupo.getParticipantes()?.includes(id)
+      grupo.getParticipantes()?.includes(id)
     );
-    misGrupos.forEach((grupo) => console.log(grupo.getId() + " " + grupo.getNombre()));
-    }
+    misGrupos.forEach((grupo) =>
+      console.log(grupo.getId() + " " + grupo.getNombre())
+    );
+  }
 
   public ordenarGruposPorNombre(orden: "ascendente" | "descendente"): grupo[] {
     if (orden === "ascendente") {
@@ -229,7 +235,6 @@ Clasificación de los usuarios: Ranking de los usuarios que más entrenamientos 
   getGrupoById(id: string): grupo | undefined {
     return this.coleccionGrupos.find((grupo) => grupo.getId() === id);
   }
-
 
   getNextId(): string {
     const last = this.coleccionGrupos[this.coleccionGrupos.length - 1].id;

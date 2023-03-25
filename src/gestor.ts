@@ -443,13 +443,141 @@ export class gestor {
             //this.menuLongitudRutas();
             break;
           case "Por la calificación media de la ruta":
-            //this.menuCalificacionRutas();
+            this.menuCalificacionRutas();
             break;
           case "Ordenar por actividad":
-            //this.menuActividadRutas();
+            this.menuActividadRutas();
             break;
           case "Volver":
             this.menuRutas();
+            break;
+        }
+      });
+  }
+
+  menuActividadRutas() {
+    inquirer
+      .prompt({
+        type: "list",
+        name: "menu",
+        message: "Elige una opción",
+        choices: ["Correr", "Bicicleta", "Volver"],
+      })
+      .then((respuesta) => {
+        switch (respuesta.menu) {
+          case "Correr":
+            this.coleccionRutas.getRutasActividad("Correr").forEach((ruta) => {
+              console.log(
+                ruta.getId() +
+                  " " +
+                  ruta.getNombre() +
+                  " " +
+                  ruta.getTipoActividad()
+              );
+            });
+            setTimeout(() => {
+              this.menuActividadRutas();
+            }, 2000);
+            break;
+          case "Bicicleta":
+            this.coleccionRutas
+              .getRutasActividad("Bicicleta")
+              .forEach((ruta) => {
+                console.log(
+                  ruta.getId() +
+                    " " +
+                    ruta.getNombre() +
+                    " " +
+                    ruta.getTipoActividad()
+                );
+              });
+            setTimeout(() => {
+              this.menuActividadRutas();
+            }, 2000);
+            break;
+          case "Volver":
+            this.menuOrdenacionRutas();
+            break;
+        }
+      });
+  }
+  menuCalificacionRutas() {
+    inquirer
+      .prompt({
+        type: "list",
+        name: "menu",
+        message: "Elige una opción",
+        choices: ["Ascendente", "Descendente", "Volver"],
+      })
+      .then((respuesta) => {
+        switch (respuesta.menu) {
+          case "Ascendente":
+            this.coleccionRutas
+              .getRutasCalificacionMedia(true)
+              .forEach((ruta) => {
+                console.log(
+                  ruta.getId() +
+                    " " +
+                    ruta.getNombre() +
+                    " " +
+                    ruta.getCalificacionMedia()
+                );
+              });
+            setTimeout(() => {
+              this.menuCalificacionRutas();
+            }, 2000);
+            break;
+          case "Descendente":
+            this.coleccionRutas
+              .getRutasCalificacionMedia(false)
+              .forEach((ruta) => {
+                console.log(
+                  ruta.getId() +
+                    " " +
+                    ruta.getNombre() +
+                    " " +
+                    ruta.getCalificacionMedia()
+                );
+              });
+            setTimeout(() => {
+              this.menuCalificacionRutas();
+            }, 2000);
+            break;
+          case "Volver":
+            this.menuOrdenacionRutas();
+            break;
+        }
+      });
+  }
+
+  menuAlfabeticoRutas() {
+    inquirer
+      .prompt({
+        type: "list",
+        name: "menu",
+        message: "Elige una opción",
+        choices: ["Ascendente", "Descendente", "Volver"],
+      })
+      .then((respuesta) => {
+        switch (respuesta.menu) {
+          case "Ascendente":
+            this.coleccionRutas.getRutasAlfabetico(true).forEach((ruta) => {
+              console.log(ruta.getId() + " " + ruta.getNombre());
+            });
+            setTimeout(() => {
+              this.menuAlfabeticoRutas();
+            }, 2000);
+            break;
+          case "Descendente":
+            this.coleccionRutas.getRutasAlfabetico(false).forEach((ruta) => {
+              console.log(ruta.getId() + " " + ruta.getNombre());
+            });
+            setTimeout(() => {
+              this.menuAlfabeticoRutas();
+            }, 2000);
+            break;
+          case "Volver":
+            this.menuOrdenacionRutas();
             break;
         }
       });
@@ -1036,39 +1164,6 @@ export class gestor {
         }
       });
   }
-
-  menuAlfabeticoRutas() {
-    inquirer
-      .prompt({
-        type: "list",
-        name: "menu",
-        message: "Elige una opción",
-        choices: ["Ascendente", "Descendente", "Volver"],
-      })
-      .then((respuesta) => {
-        switch (respuesta.menu) {
-          case "Ascendente":
-            this.coleccionRutas.getRutasAlfabetico(true).forEach((ruta) => {
-              console.log(ruta.getId() + " " + ruta.getNombre());
-            });
-            setTimeout(() => {
-              this.menuAlfabeticoRutas();
-            }, 2000);
-            break;
-          case "Descendente":
-            this.coleccionRutas.getRutasAlfabetico(false).forEach((ruta) => {
-              console.log(ruta.getId() + " " + ruta.getNombre());
-            });
-            setTimeout(() => {
-              this.menuAlfabeticoRutas();
-            }, 2000);
-            break;
-          case "Volver":
-            this.menuOrdenacionRutas();
-            break;
-        }
-      });
-    }
 
   public createUser(
     id: string,
