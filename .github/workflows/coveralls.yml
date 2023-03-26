@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+>>>>>>> 5b1c9ad6ceaa736aa7a5ab0cff173b087ea5d144
 name: Coveralls
 
 on:
@@ -7,7 +13,11 @@ on:
     branches: [ "main" ]
 
 jobs:
+<<<<<<< HEAD
   build:
+=======
+  coveralls:
+>>>>>>> 5b1c9ad6ceaa736aa7a5ab0cff173b087ea5d144
 
     runs-on: ubuntu-latest
 
@@ -25,4 +35,8 @@ jobs:
     - name: Coveralls GitHub Action
       uses: coverallsapp/github-action@v2
       with:
+<<<<<<< HEAD
         github-token: ${{ secrets.GITHUB_TOKEN }}
+=======
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+>>>>>>> 5b1c9ad6ceaa736aa7a5ab0cff173b087ea5d144
