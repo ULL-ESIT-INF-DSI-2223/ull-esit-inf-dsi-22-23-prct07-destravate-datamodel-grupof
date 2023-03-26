@@ -360,7 +360,7 @@ Esta clase `grupo` cumple los principios SOLID con la siguiente justificación:
 
 > El código define una clase llamada "ruta" que representa una ruta en un sistema de seguimiento de actividades físicas. 
 
-#### Clase ruta:  // REVISADO HASTA AQUÍ
+#### Clase ruta:
 
  La clase ruta contiene información sobre una ruta, incluyendo su identificación, nombre, coordenadas de inicio y finalización, longitud, desnivel medio, tipo de actividad (bicicleta o correr) y calificación media. La clase también tiene métodos para obtener y establecer cada uno de estos valores.
 
