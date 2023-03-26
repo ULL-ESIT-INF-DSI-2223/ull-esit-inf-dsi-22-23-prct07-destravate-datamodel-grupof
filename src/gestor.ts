@@ -184,7 +184,6 @@ Por cantidad de KM que se deben realizar, ascendente y descendente.
 Por la cantidad de usuarios que lo están realizando, ascendente y descendente
   */
   menuRetos() {
-
     inquirer
       .prompt({
         type: "list",
@@ -196,15 +195,18 @@ Por la cantidad de usuarios que lo están realizando, ascendente y descendente
           "Ver retos ordenados por nombre",
           "Ver retos ordenados por distancia",
           "Ver retos ordenados por cantidad de usuarios",
+          "Ver retos ordenados por kms",
           "Volver",
         ],
       })
       .then((respuesta) => {
         switch (respuesta.menu) {
           case "Ver mis retos":
-            this.coleccionRetos.getRetosUsuario(this.coleccionUsuarios ,this.usuarioActual).forEach((reto) => {
+            this.coleccionRetos
+              .getRetosUsuario(this.coleccionUsuarios, this.usuarioActual)
+              .forEach((reto) => {
                 console.log(reto.getId() + " " + reto.getNombre());
-                });
+              });
             setTimeout(() => {
               this.menuRetos();
             }, 2000);
@@ -221,123 +223,188 @@ Por la cantidad de usuarios que lo están realizando, ascendente y descendente
           case "Ver retos ordenados por cantidad de usuarios":
             this.menuOrdenacionRetosCantidadUsuarios();
             break;
+          case "Ver retos ordenados por kms":
+            this.menuOrdenacionRetosPorKms();
+            break;
           case "Volver":
             this.menuUsuario();
             break;
         }
       });
-
   }
 
   menuOrdenacionRetosCantidadUsuarios() {
-    inquirer.prompt({
+    inquirer
+      .prompt({
         type: "list",
         name: "menu",
         message: "Elige una opción",
         choices: [
-            "Ver retos ordenados por cantidad de usuarios ascendente",
-            "Ver retos ordenados por cantidad de usuarios descendente",
-            "Volver",
+          "Ver retos ordenados por cantidad de usuarios ascendente",
+          "Ver retos ordenados por cantidad de usuarios descendente",
+          "Volver",
         ],
-    }).then((respuesta) => {
+      })
+      .then((respuesta) => {
         switch (respuesta.menu) {
-            case "Ver retos ordenados por cantidad de usuarios ascendente":
-                this.coleccionRetos.getRetosOrdenadosCantidadUsuarios("ascendente").forEach((reto) => {
-                    console.log(reto.getId() + " " + reto.getNombre() + " " + reto.getUsuariosRealizandoReto().length);
-                });
-                setTimeout(() => {
-                    this.menuOrdenacionRetosCantidadUsuarios();
-                }, 2000);
-                break;
-            case "Ver retos ordenados por cantidad de usuarios descendente":
-                this.coleccionRetos.getRetosOrdenadosCantidadUsuarios("descendente").forEach((reto) => {
-                    console.log(reto.getId() + " " + reto.getNombre() + " " + reto.getUsuariosRealizandoReto().length);
-                });
-                setTimeout(() => {
-                    this.menuOrdenacionRetosCantidadUsuarios();
-                }, 2000);
-                break;
-            case "Volver":
-                this.menuRetos();
-                break;
-        }   
-    });
-}   
-
+          case "Ver retos ordenados por cantidad de usuarios ascendente":
+            this.coleccionRetos
+              .getRetosOrdenadosCantidadUsuarios("ascendente")
+              .forEach((reto) => {
+                console.log(
+                  reto.getId() +
+                    " " +
+                    reto.getNombre() +
+                    " " +
+                    reto.getUsuariosRealizandoReto().length
+                );
+              });
+            setTimeout(() => {
+              this.menuOrdenacionRetosCantidadUsuarios();
+            }, 2000);
+            break;
+          case "Ver retos ordenados por cantidad de usuarios descendente":
+            this.coleccionRetos
+              .getRetosOrdenadosCantidadUsuarios("descendente")
+              .forEach((reto) => {
+                console.log(
+                  reto.getId() +
+                    " " +
+                    reto.getNombre() +
+                    " " +
+                    reto.getUsuariosRealizandoReto().length
+                );
+              });
+            setTimeout(() => {
+              this.menuOrdenacionRetosCantidadUsuarios();
+            }, 2000);
+            break;
+          case "Volver":
+            this.menuRetos();
+            break;
+        }
+      });
+  }
 
   menuOrdenacionRetosDistancia() {
     inquirer
-        .prompt({
-            type: "list",
-            name: "menu",
-            message: "Elige una opción",
-            choices: [
-                "Ver retos ordenados por distancia ascendente",
-                "Ver retos ordenados por distancia descendente",
-                "Volver",
-            ],
-        })
-        .then((respuesta) => {
-            switch (respuesta.menu) {
-                case "Ver retos ordenados por distancia ascendente":
-                    this.coleccionRetos.getRetosOrdenadosDistancia(this.coleccionRutas, "ascendente").forEach((reto) => {
-                        console.log(reto.getId() + " " + reto.getNombre());
-                    });
-                    setTimeout(() => {
-                        this.menuOrdenacionRetosDistancia();
-                    }, 2000);
-                    break;
-                case "Ver retos ordenados por distancia descendente":
-                    this.coleccionRetos.getRetosOrdenadosDistancia(this.coleccionRutas, "descendente").forEach((reto) => {
-                        console.log(reto.getId() + " " + reto.getNombre());
-                    });
-                    setTimeout(() => {
-                        this.menuOrdenacionRetosDistancia();
-                    }, 2000);
-                    break;
-                case "Volver":
-                    this.menuRetos();
-                    break;
-            }
-        });
+      .prompt({
+        type: "list",
+        name: "menu",
+        message: "Elige una opción",
+        choices: [
+          "Ver retos ordenados por distancia ascendente",
+          "Ver retos ordenados por distancia descendente",
+          "Volver",
+        ],
+      })
+      .then((respuesta) => {
+        switch (respuesta.menu) {
+          case "Ver retos ordenados por distancia ascendente":
+            this.coleccionRetos
+              .getRetosOrdenadosDistancia(this.coleccionRutas, "ascendente")
+              .forEach((reto) => {
+                console.log(reto.getId() + " " + reto.getNombre());
+              });
+            setTimeout(() => {
+              this.menuOrdenacionRetosDistancia();
+            }, 2000);
+            break;
+          case "Ver retos ordenados por distancia descendente":
+            this.coleccionRetos
+              .getRetosOrdenadosDistancia(this.coleccionRutas, "descendente")
+              .forEach((reto) => {
+                console.log(reto.getId() + " " + reto.getNombre());
+              });
+            setTimeout(() => {
+              this.menuOrdenacionRetosDistancia();
+            }, 2000);
+            break;
+          case "Volver":
+            this.menuRetos();
+            break;
+        }
+      });
   }
 
   menuOrdenacionRetosNombre() {
     inquirer
-        .prompt({
-            type: "list",
-            name: "menu",
-            message: "Elige una opción",
-            choices: [
-                "Ver retos ordenados por nombre ascendente",
-                "Ver retos ordenados por nombre descendente",
-                "Volver",
-            ],
-        })
-        .then((respuesta) => {
-            switch (respuesta.menu) {
-                case "Ver retos ordenados por nombre ascendente":
-                    this.coleccionRetos.getRetosOrdenadosNombre("ascendente").forEach((reto) => {
-                        console.log(reto.getId() + " " + reto.getNombre());
-                    });
-                    setTimeout(() => {
-                        this.menuOrdenacionRetosNombre();
-                    }, 2000);
-                    break;
-                case "Ver retos ordenados por nombre descendente":
-                    this.coleccionRetos.getRetosOrdenadosNombre("descendente").forEach((reto) => {
-                        console.log(reto.getId() + " " + reto.getNombre());
-                    });
-                    setTimeout(() => {
-                        this.menuOrdenacionRetosNombre();
-                    }, 2000);
-                    break;
-                case "Volver":
-                    this.menuRetos();
-                    break;
-            }
-        });
-}
+      .prompt({
+        type: "list",
+        name: "menu",
+        message: "Elige una opción",
+        choices: [
+          "Ver retos ordenados por nombre ascendente",
+          "Ver retos ordenados por nombre descendente",
+          "Volver",
+        ],
+      })
+      .then((respuesta) => {
+        switch (respuesta.menu) {
+          case "Ver retos ordenados por nombre ascendente":
+            this.coleccionRetos
+              .getRetosOrdenadosNombre("ascendente")
+              .forEach((reto) => {
+                console.log(reto.getId() + " " + reto.getNombre());
+              });
+            setTimeout(() => {
+              this.menuOrdenacionRetosNombre();
+            }, 2000);
+            break;
+          case "Ver retos ordenados por nombre descendente":
+            this.coleccionRetos
+              .getRetosOrdenadosNombre("descendente")
+              .forEach((reto) => {
+                console.log(reto.getId() + " " + reto.getNombre());
+              });
+            setTimeout(() => {
+              this.menuOrdenacionRetosNombre();
+            }, 2000);
+            break;
+          case "Volver":
+            this.menuRetos();
+            break;
+        }
+      });
+  }
+
+  menuOrdenacionRetosPorKms() {
+    inquirer
+      .prompt({
+        type: "list",
+        name: "menu",
+        message: "Elige una opción",
+        choices: [
+          "Ver retos ordenados por kms ascendente",
+          "Ver retos ordenados por kms descendente",
+          "Volver",
+        ],
+      })
+      .then((respuesta) => {
+        switch (respuesta.menu) {
+          case "Ver retos ordenados por kms ascendente":
+            this.coleccionRetos.getRetosOrdenadosKmsTotales(this.coleccionRutas, "ascendente").forEach((reto) => {
+              console.log(reto.getId() + " " + reto.getNombre() + " " + this.coleccionRetos.getDistanciaTotalReto(this.coleccionRutas, reto.getId()));
+            });
+            setTimeout(() => {
+              this.menuOrdenacionRetosPorKms();
+            }, 2000);
+            break;
+          case "Ver retos ordenados por kms descendente":
+            this.coleccionRetos.getRetosOrdenadosKmsTotales(this.coleccionRutas, "descendente").forEach((reto) => {
+              console.log(reto.getId() + " " + reto.getNombre() + " " + this.coleccionRetos.getDistanciaTotalReto(this.coleccionRutas, reto.getId()));
+            });
+            setTimeout(() => {
+              this.menuOrdenacionRetosPorKms();
+            }, 2000);
+            break;
+          case "Volver":
+            this.menuRetos();
+            break;
+        }
+      });
+  }
+
   public menuInfoRetos() {
     const retos: { id: string }[] = [];
     this.coleccionRetos.getColeccionRetos().forEach((reto) => {
@@ -558,7 +625,11 @@ Por la cantidad de usuarios que lo están realizando, ascendente y descendente
                 message: "Introduce el id de la ruta que has realizado",
               })
               .then((respuesta) => {
-                this.coleccionRutas.addRutaRealizada(this.coleccionUsuarios,respuesta.id, this.usuarioActual)
+                this.coleccionRutas.addRutaRealizada(
+                  this.coleccionUsuarios,
+                  respuesta.id,
+                  this.usuarioActual
+                );
                 setTimeout(() => {
                   this.menuRutas();
                 }, 2000);
@@ -605,7 +676,7 @@ Por la cantidad de usuarios que lo están realizando, ascendente y descendente
         }
       });
   }
-  
+
   public menuOrdenacionRutas() {
     inquirer
       .prompt({
@@ -646,69 +717,103 @@ Por la cantidad de usuarios que lo están realizando, ascendente y descendente
   }
 
   menuCantidadUsuariosRutas() {
-    inquirer.prompt({
+    inquirer
+      .prompt({
         type: "list",
         name: "menu",
         message: "Elige una opción",
         choices: ["Ascendente", "Descendente", "Volver"],
-        })
-        .then((respuesta) => {
-            switch (respuesta.menu) {
-                case "Ascendente":
-                    this.coleccionRutas.getRutasPorCantidadUsuarios(this.coleccionUsuarios, true).forEach((ruta) => {
-                        console.log(ruta.getId() + " " + ruta.getNombre() + " " + this.coleccionRutas.getUsuariosFinalizados(this.coleccionUsuarios, ruta.getId()).length);
-                    });
-                    setTimeout(() => {
-                        this.menuCantidadUsuariosRutas();
-                    }, 2000);
-                    break;
-                case "Descendente":
-                    this.coleccionRutas.getRutasPorCantidadUsuarios(this.coleccionUsuarios, false).forEach((ruta) => {
-                        console.log(ruta.getId() + " " + ruta.getNombre() + " " + this.coleccionRutas.getUsuariosFinalizados(this.coleccionUsuarios, ruta.getId()).length);
-                    });
-                    setTimeout(() => {
-                        this.menuCantidadUsuariosRutas();
-                    }, 2000);
-                    break;
-                case "Volver":
-                    this.menuOrdenacionRutas();
-                    break;
-            }
-        });
-
+      })
+      .then((respuesta) => {
+        switch (respuesta.menu) {
+          case "Ascendente":
+            this.coleccionRutas
+              .getRutasPorCantidadUsuarios(this.coleccionUsuarios, true)
+              .forEach((ruta) => {
+                console.log(
+                  ruta.getId() +
+                    " " +
+                    ruta.getNombre() +
+                    " " +
+                    this.coleccionRutas.getUsuariosFinalizados(
+                      this.coleccionUsuarios,
+                      ruta.getId()
+                    ).length
+                );
+              });
+            setTimeout(() => {
+              this.menuCantidadUsuariosRutas();
+            }, 2000);
+            break;
+          case "Descendente":
+            this.coleccionRutas
+              .getRutasPorCantidadUsuarios(this.coleccionUsuarios, false)
+              .forEach((ruta) => {
+                console.log(
+                  ruta.getId() +
+                    " " +
+                    ruta.getNombre() +
+                    " " +
+                    this.coleccionRutas.getUsuariosFinalizados(
+                      this.coleccionUsuarios,
+                      ruta.getId()
+                    ).length
+                );
+              });
+            setTimeout(() => {
+              this.menuCantidadUsuariosRutas();
+            }, 2000);
+            break;
+          case "Volver":
+            this.menuOrdenacionRutas();
+            break;
+        }
+      });
   }
 
   menuLongitudRutas() {
-    inquirer.prompt({
+    inquirer
+      .prompt({
         type: "list",
         name: "menu",
         message: "Elige una opción",
         choices: ["Ascendente", "Descendente", "Volver"],
-        })
-        .then((respuesta) => {
-            switch (respuesta.menu) {
-                case "Ascendente":
-                    this.coleccionRutas.getRutasPorLongitud(true).forEach((ruta) => {
-                        console.log(ruta.getId() + " " + ruta.getNombre() + " " + ruta.getLongitudRuta());
-                    });
-                    setTimeout(() => {
-                        this.menuLongitudRutas();
-                    }, 2000);
-                    break;
-                case "Descendente":
-                    this.coleccionRutas.getRutasPorLongitud(false).forEach((ruta) => {
-                        console.log(ruta.getId() + " " + ruta.getNombre() + " " + ruta.getLongitudRuta());
-                    });
-                    setTimeout(() => {
-                        this.menuLongitudRutas();
-                    }, 2000);
-                    break;
-                case "Volver":
-                    this.menuOrdenacionRutas();
-                    break;
-            }
-        });
-
+      })
+      .then((respuesta) => {
+        switch (respuesta.menu) {
+          case "Ascendente":
+            this.coleccionRutas.getRutasPorLongitud(true).forEach((ruta) => {
+              console.log(
+                ruta.getId() +
+                  " " +
+                  ruta.getNombre() +
+                  " " +
+                  ruta.getLongitudRuta()
+              );
+            });
+            setTimeout(() => {
+              this.menuLongitudRutas();
+            }, 2000);
+            break;
+          case "Descendente":
+            this.coleccionRutas.getRutasPorLongitud(false).forEach((ruta) => {
+              console.log(
+                ruta.getId() +
+                  " " +
+                  ruta.getNombre() +
+                  " " +
+                  ruta.getLongitudRuta()
+              );
+            });
+            setTimeout(() => {
+              this.menuLongitudRutas();
+            }, 2000);
+            break;
+          case "Volver":
+            this.menuOrdenacionRutas();
+            break;
+        }
+      });
   }
 
   menuActividadRutas() {

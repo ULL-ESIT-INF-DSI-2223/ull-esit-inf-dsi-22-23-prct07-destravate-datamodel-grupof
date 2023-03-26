@@ -8,10 +8,12 @@ const gestion = new gestor();
 
 gestion.login();
 
-/*const usuarioCollectionPrueba = new usuarioCollection([])
+//const usuarioCollectionPrueba = new usuarioCollection([])
 const grupoCollectionPrueba = new grupoCollection([])
 const rutaCollectionPrueba = new rutaCollection([])
-const retoCollectionPrueba = new retoCollection([])*/
+const retoCollectionPrueba = new retoCollection([])
+
+//console.log(retoCollectionPrueba.getDistanciaTotalReto(rutaCollectionPrueba, "C1"))
 
 /*let visible = 5
 
@@ -22,6 +24,7 @@ if (visible == 1) {
 if (visible == 2) {
     console.log(grupoCollectionPrueba.getColeccionGrupos())
 }
+
 
 if (visible == 3) {
     console.log(rutaCollectionPrueba.getColeccionRutas())

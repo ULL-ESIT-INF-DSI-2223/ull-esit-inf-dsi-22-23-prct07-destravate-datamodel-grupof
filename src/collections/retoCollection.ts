@@ -100,21 +100,18 @@ export class retoCollection {
     }
   }
 
-  getDistanciaTotalReto(coleccionRutas: rutaCollection, id: string): number {
+  public getDistanciaTotalReto(coleccionRutas: rutaCollection, id: string): number {
     let distanciaTotal = 0;
     const reto = this.coleccionRetos.find((reto) => reto.getId() === id);
-    
     if (reto) {
       reto.getRutasReto().forEach((ruta) => {
-        if (ruta) {
-        const rutas = coleccionRutas.getColeccionRutas().find((ruta) => ruta.getId() === id);
-        //distanciaTotal += rutas?.getLongitudRuta();
+        const rutaReto = coleccionRutas.getColeccionRutas().find((rutaReto) => rutaReto.getId() === ruta);
+        if (rutaReto) {
+          distanciaTotal += rutaReto.getLongitudRuta();
         }
-        
       });
     }
     return distanciaTotal;
-
   }
   getRetosOrdenadosDistancia(coleccionRutas: rutaCollection ,orden: "ascendente" | "descendente"): reto[] {
       console.log("Retos ordenados por distancia: ");
@@ -134,6 +131,16 @@ export class retoCollection {
     } else {
       return this.coleccionRetos.sort((a, b) => b.getUsuariosRealizandoReto().length - 
       a.getUsuariosRealizandoReto().length);
+    }
+  }
+
+  getRetosOrdenadosKmsTotales(coleccionRutas: rutaCollection, orden: "ascendente" | "descendente"): reto[] {
+    if (orden === "ascendente") {
+      return this.coleccionRetos.sort((a, b) => this.getDistanciaTotalReto(coleccionRutas, a.getId()) - 
+      this.getDistanciaTotalReto(coleccionRutas, b.getId()));
+    } else {
+      return this.coleccionRetos.sort((a, b) => this.getDistanciaTotalReto(coleccionRutas, b.getId()) - 
+      this.getDistanciaTotalReto(coleccionRutas, a.getId()));
     }
   }
   

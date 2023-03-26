@@ -3,21 +3,21 @@
     {
       "id": "C1",
       "nombre": "El reto de la muerte",
-      "rutasReto": [],
+      "rutasReto": ["R1","R2","R3", "R4","R5"],
       "tipoActividad": "Bicicleta",
       "usuariosRealizandoReto": ["USU1"]
     },
     {
       "id": "C2",
       "nombre": "Papita suave",
-      "rutasReto": [],
+      "rutasReto": ["R1"],
       "tipoActividad": "Corriendo",
       "usuariosRealizandoReto": ["USU2", "USU1"]
     },
     {
       "id": "C3",
       "nombre": "Reto retito",
-      "rutasReto": [],
+      "rutasReto": ["R1","R2"],
       "tipoActividad": "Corriendo",
       "usuariosRealizandoReto": ["USU2"]
     }
