@@ -128,8 +128,6 @@ export class rutaCollection {
     }
   }
 
-  //Ordenar por actividad: correr o ciclismo.
-
   public getRutasActividad(actividad: string): ruta[] {
     // comprobamos que la actividad es ciclismo o correr
     if (actividad === "Bicicleta" || actividad === "Correr") {
