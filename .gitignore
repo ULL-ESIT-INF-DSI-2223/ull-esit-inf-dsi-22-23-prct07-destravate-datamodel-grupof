@@ -3,6 +3,4 @@ dist
 package-lock.json
 enunciado.txt
 commands.txt
-.nyc_output
 .coveralls.yml
-coverage
