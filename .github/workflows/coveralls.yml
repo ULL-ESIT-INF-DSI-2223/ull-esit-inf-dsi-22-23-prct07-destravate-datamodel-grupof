@@ -3,7 +3,7 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
->>>>>>> 5b1c9ad6ceaa736aa7a5ab0cff173b087ea5d144
+>>>>>>> wLHWFVUGBwToTk6jYeTQWMpj3M6Ti32NL
 name: Coveralls
 
 on:
@@ -17,7 +17,7 @@ jobs:
   build:
 =======
   coveralls:
->>>>>>> 5b1c9ad6ceaa736aa7a5ab0cff173b087ea5d144
+>>>>>>> wLHWFVUGBwToTk6jYeTQWMpj3M6Ti32NL
 
     runs-on: ubuntu-latest
 
@@ -39,4 +39,4 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
 =======
         github-token: ${{ secrets.GITHUB_TOKEN }}
->>>>>>> 5b1c9ad6ceaa736aa7a5ab0cff173b087ea5d144
+>>>>>>> wLHWFVUGBwToTk6jYeTQWMpj3M6Ti32NL
