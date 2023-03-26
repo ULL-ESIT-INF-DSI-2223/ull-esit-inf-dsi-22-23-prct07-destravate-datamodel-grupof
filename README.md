@@ -228,7 +228,7 @@ describe('Comprobar clase Usuario', () => {
 
 #### Cumplimiento de los principios SOLID en la clase usuario:
 
-Esta clase `X` cumple los principios SOLID con la siguiente justificación:
+Esta clase `usuario` cumple los principios SOLID con la siguiente justificación:
 
 - **Single responsibility (SRP)**: La clase usuario se encarga de gestionar la información de un usuario y no tiene más de una razón para cambiar. Por lo tanto, cumple con el principio SRP.
 
@@ -345,7 +345,7 @@ Cada test se ejecuta mediante la función it() de la librería mocha, que recibe
 
 #### Cumplimiento de los principios SOLID en la clase grupo:
 
-Esta clase `X` cumple los principios SOLID con la siguiente justificación:
+Esta clase `grupo` cumple los principios SOLID con la siguiente justificación:
 
 - **Single responsibility (SRP)**: La clase grupo tiene una única responsabilidad, que es representar la entidad de un grupo y proporcionar métodos para obtener su información.
 
@@ -655,7 +655,7 @@ Esta clase `reto` cumple los principios SOLID con la siguiente justificación:
 - **Dependency Inversion Principle (DIP)**: La clase "reto" no cumple con el principio de inversión de dependencia (DIP), ya que no se basa en abstracciones, sino que depende directamente de tipos concretos para sus propiedades. En caso de que se necesite utilizar diferentes tipos para estas propiedades, podría ser necesario modificar la implementación de la clase "reto".
 
 
-### Colecciones de datos <a name="colecciones"></a> // REVISAR A PARTIR DE AQUÍ
+### Colecciones de datos <a name="colecciones"></a>
 > [Volver al índice](#índice)
 
 > A continuación se detallan las colecciones de datos que se utilizarán en la aplicación.
