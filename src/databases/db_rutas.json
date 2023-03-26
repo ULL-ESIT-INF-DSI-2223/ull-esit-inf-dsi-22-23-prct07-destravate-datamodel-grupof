@@ -7,7 +7,12 @@
       "coordenadasFinal": "40.5678,-3.6789",
       "longitudRuta": 20,
       "desnivelMedio": 50,
-      "usuariosFinalizados": ["USU5", "USU7", "USU2", "USU1"],
+      "usuariosFinalizados": [
+        "USU5",
+        "USU7",
+        "USU2",
+        "USU1"
+      ],
       "tipoActividad": "Bicicleta",
       "calificacionMedia": 3.8
     },
@@ -39,17 +44,6 @@
       "coordenadasInicio": "41.2013,-1.7342",
       "coordenadasFinal": "41.1679,-1.7948",
       "longitudRuta": 15,
-      "desnivelMedio": 300,
-      "usuariosFinalizados": [],
-      "tipoActividad": "Correr",
-      "calificacionMedia": 4.5
-    },
-    {
-      "id": "R5",
-      "nombre": "Ruta de senderismo por el parque nacional",
-      "coordenadasInicio": "41.2013,-1.7342",
-      "coordenadasFinal": "41.1679,-1.7948",
-      "longitudRuta": 10,
       "desnivelMedio": 300,
       "usuariosFinalizados": [],
       "tipoActividad": "Correr",

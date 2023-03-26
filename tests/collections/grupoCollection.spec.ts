@@ -20,22 +20,22 @@ const grupo1: grupo = new grupo('GR4', 'Grupo 4', ['USU1', 'USU2', 'USU3'], [{
     "usuarios": [
         "USU1"
     ]
-}]);
+}], 'USU1');
 
 describe('Comprobar clase GrupoCollection', () => {
     it('Metodos: getColeccionGrupos(): grupo []', () => {
-        expect(grupoCollection1.getColeccionGrupos().length).to.be.eql(3);
+        expect(grupoCollection1.getColeccionGrupos().length).to.be.eql(5);
     });
     it('Metodos: addGrupo(grupo: grupo)', () => {
         grupoCollection1.addGrupo(grupo1);
-        expect(grupoCollection1.getColeccionGrupos().length).to.be.eql(4);
+        expect(grupoCollection1.getColeccionGrupos().length).to.be.eql(6);
     });
     it('Metodos: removeGrupo(id: string)', () => {
         grupoCollection1.removeGrupo('GR4');
-        expect(grupoCollection1.getColeccionGrupos().length).to.be.eql(3);
+        expect(grupoCollection1.getColeccionGrupos().length).to.be.eql(5);
     });
     it('Metodo: getEstadisticasEntrenamiento(coleccionRutas: rutaCollection ,id: string, tiempo: "semana" | "mes" | "año"): {km: number, desnivel: number }', () => {
-        expect(grupoCollection1.getEstadisticasEntrenamiento(rutaCollection1, 'G1', 'mes')).to.be.eql({ km: 15, desnivel: 200 });
+        expect(grupoCollection1.getEstadisticasEntrenamiento(rutaCollection1, 'G1', 'mes')).to.be.eql({ km: 30, desnivel: 400 });
     });
     it('Metodo: getClasificacionUsuarios(coleccionRutas: rutaCollection ,id: string, tipo: "km" | "desnivel"): {usuario: string, valor: number}[]', () => {
         expect(grupoCollection1.getClasificacionUsuarios(rutaCollection1, 'G1', 'km')).to.be.eql([{ usuario: 'USU1', valor: 30 }, { usuario: 'USU2', valor: 15 }]);

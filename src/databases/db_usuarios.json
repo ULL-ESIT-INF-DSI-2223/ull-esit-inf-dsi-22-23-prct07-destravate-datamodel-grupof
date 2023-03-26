@@ -257,17 +257,6 @@
       ]
     },
     {
-      "id": "USU17",
-      "nombre": "Lola",
-      "actividades": "Correr",
-      "historicoRutas": [
-        {
-          "fecha": "2022-05-12",
-          "ruta": "R8"
-        }
-      ]
-    },
-    {
       "id": "USU18",
       "nombre": "Lola",
       "actividades": "Correr",

@@ -3,7 +3,7 @@ import 'mocha';
 import { expect } from 'chai'
 
 
-const grupo1: grupo = new grupo("G1", "Grupo de aventureros", ["USU1", "USU2"], [ { fecha: new Date("2022-05-12T18:25:43.511Z"), ruta: "R2", usuarios: ["USU1", "USU2"] }, { fecha: new Date("2022-05-12T18:25:43.511Z"), ruta: "R2", usuarios: ["USU1"] } ]);
+const grupo1: grupo = new grupo("G1", "Grupo de aventureros", ["USU1", "USU2"], [ { fecha: new Date("2022-05-12T18:25:43.511Z"), ruta: "R2", usuarios: ["USU1", "USU2"] }, { fecha: new Date("2022-05-12T18:25:43.511Z"), ruta: "R2", usuarios: ["USU1"] } ], "USU1");
 
 describe('Comprobar clase Grupo', () => {
     it('Metodos: getId(): string', () => {
