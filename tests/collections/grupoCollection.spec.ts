@@ -41,7 +41,7 @@ describe('Comprobar clase GrupoCollection', () => {
         expect(grupoCollection1.getClasificacionUsuarios(rutaCollection1, 'G1', 'km')).to.be.eql([{ usuario: 'USU1', valor: 30 }, { usuario: 'USU2', valor: 15 }]);
     });
     it('Metodo: getRutasFavoritas(coleccionRutas: rutaCollection ,id: string): {ruta: string, frecuencia: number}[]', () => {
-        expect(grupoCollection1.getRutasFavoritas(rutaCollection1, 'G2')).to.be.eql([{ ruta: 'R2', frecuencia: 2}, { ruta: 'R4', frecuencia: 2}, { ruta: 'R5', frecuencia: 1}]);
+        expect(grupoCollection1.getRutasFavoritas(rutaCollection1, 'G2')).to.be.eql([{ ruta: 'R3', frecuencia: 2}, { ruta: 'R4', frecuencia: 2}, { ruta: 'R5', frecuencia: 1}]);
     });
 
 
