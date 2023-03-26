@@ -15,6 +15,7 @@
     "test3": "mocha -r ts-node/register 'tests/ejercicio03.spec.ts'",
     "mod1": "mocha -r ts-node/register 'tests/modificacion01.spec.ts'",
     "mod2": "mocha -r ts-node/register 'tests/modificacion02.spec.ts'",
+    "nyc": "nyc npm test",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls && rm -rf .nyc_output"
   },
   "keywords": [],
